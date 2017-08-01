@@ -112,6 +112,7 @@ var VenteApp = VenteApp || {};
     },
 
     saveVente: function(event) {
+      var _this = this;
       $.ajax({
         url: Routing.generate('vente.add'),
         type: "POST",
@@ -125,7 +126,6 @@ var VenteApp = VenteApp || {};
           $('#btnVenteSave-icon')
            .removeClass('icon')
            .addClass('fa fa-spinner fa-pulse');
-
           console.log(icon);
         },
         success: function(response) {
@@ -134,7 +134,7 @@ var VenteApp = VenteApp || {};
           $('#btnVenteSave-icon')
            .removeClass('fa fa-spinner fa-pulse')
            .addClass(icon);
-          this.removeBddItems();
+          _this.removeBddItems();
           window.location = Routing.generate('vente_show', {'id': response.vente.id });
         }
       });

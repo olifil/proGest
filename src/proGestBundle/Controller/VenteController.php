@@ -272,14 +272,14 @@ class VenteController extends Controller
 
       foreach ($products as $key => $product) {
         $article = $repository -> find($product['id']);
-        $article -> setVendu($product['quantite']);
-        $article -> setStock($product['stock']);
+        $article -> setVendu($article -> getVendu() + $product['quantite']);
+        $article -> setStock($article -> getstock() - $product['quantite']);
         $em -> persist($article);
 
         $variation = new Variation();
         $variation -> setArticle($article);
         $variation -> setVente($vente);
-        $variation -> setQuantite($product['quantite']);
+        $variation -> setQuantite($product['quantite'] * (-1));
         $variation -> setPrixVente($product['prixUnitaire']);
         $variation -> setIsactive(true);
         $em -> persist($variation);

@@ -4,6 +4,7 @@ namespace proGestBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Request;
 
 use proGestBundle\Entity\Article;
 use proGestBundle\Entity\Fournisseur;
@@ -229,17 +230,36 @@ class ArticleController extends Controller
       ));
     }
 
-    public function delAction(Article $article)
+    public function delAction(Request $request, Article $article)
     {
-        $fournisseur = $article->getFournisseur();
+        $em = $this ->get('doctrine.orm.entity_manager');
+        $fournisseur = $article -> getFournisseur();
 
-        $em = $this->getDoctrine()->getManager();
-        $em->remove($article);
-        $em->flush();
+        if ( $article -> getStock() > 0 ) {
+          // On crée un message d'alerte
+          $request -> getSession() -> getFlashBag() -> add('warning', "Afin de pouvoir supprimer un article, vous devez d'abord retirez tous ceux encore présents en stock !");
 
-        return $this->redirect($this->generateUrl('fournisseur-view', array(
-          'id' => $fournisseur->getId()
-        )));
+          return $this -> redirect($this->generateUrl('article-view', array(
+            'id' => $article -> getId()
+          )));
+        } elseif ( $article -> getStock() == 0 ) {
+          // Pour cet article, on supprime toute les variations
+          $variations = $em -> getRepository('proGestBundle:Variation') -> findByArticle($article);
+          // On teste si l'article a eu des variations de stock
+          if ( count($variations) != 0 ) {
+            foreach ($variations as $key => $variation) {
+              $em -> remove($variation);
+            }
+          }
+
+          // On supprime l'article
+          $em->remove($article);
+          $em->flush();
+
+          return $this->redirect($this->generateUrl('fournisseur-view', array(
+            'id' => $fournisseur -> getId()
+          )));
+        }
     }
 
     public function livraisonAction(Article $article)
