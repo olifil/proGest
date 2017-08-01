@@ -1,0 +1,81 @@
+# Controller des Articles
+articles:
+    path:     /
+    defaults: { _controller: proGestBundle:Article:index }
+    options:
+        expose: true
+
+article-view:
+    path:     /{id}
+    defaults: { _controller: proGestBundle:Article:view }
+    requirements:
+        id:   \d+
+    options:
+        expose: true
+
+article-add:
+    path:     /add
+    defaults: { _controller: proGestBundle:Article:add }
+    options:
+        expose: true
+
+article-getEditForm:
+    path:     /getEditForm/{id}
+    defaults: { _controller: proGestBundle:Article:getEditForm }
+    requirements:
+        id:   \d+
+    options:
+        expose: true
+
+article-edit:
+    path:     /edit/{id}
+    defaults: { _controller: proGestBundle:Article:edit }
+    requirements:
+        id:   \d+
+    options:
+        expose: true
+
+article-del:
+    path:     /del/{id}
+    defaults: { _controller: proGestBundle:Article:del }
+    methods: GET
+    requirements:
+        id:   \d+
+    options:
+        expose: true
+
+article_setLivraison:
+    path:     /{id}/livraison
+    defaults: { _controller: proGestBundle:Article:livraison }
+    methods: POST
+    requirements:
+        id:   \d+
+    options:
+        expose: true
+
+article_editLivraison:
+  path:     /{id}/editLivraison
+  defaults: { _controller: proGestBundle:Article:editLivraison }
+  methods: POST
+  options:
+      expose: true
+
+articles_print:
+    path:     /articles/list
+    defaults: { _controller: proGestBundle:Article:indexPrint }
+    options:
+        expose: true
+
+article_ref_autocomplete:
+    pattern: /json/reference
+    defaults: { _controller: "proGestBundle:Json:references"}
+    options:
+        expose: true
+
+article_tags:
+    path:     /{id}/tag/{tagStart}/quantite/{quantite}
+    defaults: { _controller: proGestBundle:Article:ArticleTags }
+    requirements:
+        id:   \d+
+    options:
+        expose: true

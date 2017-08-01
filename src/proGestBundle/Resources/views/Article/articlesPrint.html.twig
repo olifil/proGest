@@ -1,0 +1,47 @@
+{% extends '::print_layout.html.twig' %}
+
+{% block body %}
+    <h2>Liste des articles au <strong>{{ 'now'|date('d - m - Y') }}</strong></h2>
+
+    <table class="table table-striped table-condensed">
+      <thead>
+        <tr>
+          <th class="text-center">Réf.</th>
+          <th class="text-center">Désignation</th>
+          <th class="text-center">Fournisseur</th>
+          <th class="text-center">Q Livrée</th>
+          <th class="text-center">Q Vendue</th>
+          <th class="text-center">Solde Quantité</th>
+          <th class="text-center">Prix unitaire</th>
+          <th class="text-center">CA Total</th>
+          <th class="text-center">Dont marge {{ boutique.marge }} %</th>
+          <th class="text-center">Solde</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for article in articles %}
+          <tr>
+            <td class="text-center">{{ article.reference }}</td>
+            <td>{{ article.nom }}</td>
+            <td>{{ article.fournisseur.nom }}{{ article.fournisseur.prenom }}</td>
+            <td class="text-center">{% if article.livre == null %}0{% else %}{{ article.livre }}{% endif %}</td>
+            <td class="text-center">{% if article.vendu %}{{ article.vendu }}{% else %}0{% endif %}</td>
+            <td class="text-center">{{ article.livre - article.vendu }}</td>
+            <td class="text-right">{{ article.prixAchat|number_format(2) }} €</td>
+            <td class="text-right">{{ (article.vendu * article.prixAchat)|number_format(2) }} €</td>
+            <td class="text-right">{{ (( article.prixAchat * boutique.marge /100 ) * article.vendu)|number_format(2) }} €</td>
+            <td class="text-right">{{ ((article.vendu * article.prixAchat) - (( article.prixAchat * boutique.marge /100 ) * article.vendu))|number_format(2) }} €</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+      <tfoot>
+        <tr>
+          <th colspan="7" class="text-right">Totaux</th>
+          <th class="text-right">{{ ca|number_format(2)}} €</th>
+          <th class="text-right">{{ marge|number_format(2)}} €</th>
+          <th class="text-right">{{ solde|number_format(2)}} €</th>
+        </tr>
+      </tfoot>
+    </table>
+
+{% endblock %}

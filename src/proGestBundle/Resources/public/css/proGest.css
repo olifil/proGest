@@ -1,0 +1,244 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+  background-image: url('../imgs/background.png');
+}
+
+article h3 {
+    border-bottom: 1px solid gray;
+}
+
+header {
+  position: fixed;
+  width: 100%;
+  z-index: 100;
+}
+
+#fil_ariane {
+  margin-top: 50px;
+}
+.logo {
+  position: relative;
+  top: 15px;
+}
+section .section {
+  padding-top: 30px;
+  padding-bottom: 30px;
+  background-color: white;
+  box-shadow: -2px 0px 5px gray;
+  border-radius: 0px 0px 0px 5px;
+}
+footer .footer {
+  padding-top: 10px;
+  padding-right: 30px;
+  height: 40px;
+  font-size: 0.9em;
+  font-weight: bold;
+}
+
+.margin-bottom {
+  margin-bottom: 20px;
+}
+
+table {
+    font-size: 0.85em;
+}
+.m-10 {
+  margin-top: 10px;
+}
+.obligatoire {
+  color: red;
+}
+.t-5 {
+    width: 5%;
+}
+.t-7 {
+    width: 7%;
+}
+.t-10 {
+    width: 10%;
+}
+.t-15 {
+    width: 15%;
+}
+.t-20 {
+    width: 20%;
+}
+.t-30 {
+    width: 30%;
+}
+.t-40 {
+    width: 40%;
+}
+.t-50 {
+    width: 50%;
+}
+th.descriptif, td.descriptif {
+    width: 60%;
+}
+td.monaitaire {
+    text-align: right;
+}
+td.type, td.nombre {
+    width: 10%;
+    text-align: center;
+}
+/* Définition de la TOOLBAR */
+.toolbar {
+    position: fixed;
+    top: 75px; left: 50px;
+    margin: 0px; padding: 0px;
+
+    background-color: rgba(255, 255, 255, 1);
+    border: 1px solid silver;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px silver;
+}
+.toolbar a span.fa,
+.toolbar a span.glyphicon,
+.toolbar button span.fa,
+.toolbar button span.glyphicon
+{
+  margin-right: 0px;
+}
+.toolbar ul {
+    list-style-type: none;
+    padding: 5px; margin: 0px;
+    text-align: center;
+}
+.toolbar li {
+    display: block;
+    margin-bottom: 5px;
+}
+.toolbar li:last-child {
+    margin-bottom: -1px;
+}
+
+
+a span.fa,
+a span.glyphicon
+{
+  margin-right: 10px;
+}
+.widget {
+  height: 200px;
+}
+.widget-border {
+  border: 2px solid gray;
+  border-radius: 5px;
+}
+.widget h4 {
+  text-align: center;
+  padding-top: 50px;
+}
+.widget p.edit {
+  position: absolute;
+  right: 25px;
+  top: 10px;
+  width: 80%; height: 20px;
+  text-align: right;
+}
+
+.widget a span.fa {
+  margin-right: 0px;
+}
+.widget .quantite {
+  position: absolute;
+  bottom: 10px;
+  right: 25px;
+}
+.widget .quantite input{
+  width:60px;
+  position: absolute;
+  right: 33px;
+}
+.loader {
+  background-image: url('../imgs/loader.gif');
+  background-repeat: no-repeat;
+}
+.loader-left {
+    background-position: left;
+}
+.loader-right {
+    background-position: calc(100% - 5px) 50%;
+}
+.icon {
+  background-repeat: no-repeat;
+  background-position: bottom center;
+}
+.icon-fournisseur {
+  background-image: url('../imgs/fournisseurs.jpg');
+}
+.icon-rayon {
+  background-image: url('../imgs/rayons.jpg');
+}
+
+.onglet {
+  margin: 15px;
+  padding: 15px;
+  border: 1px solid silver;
+  border-radius: 5px;
+}
+
+/* Mise en forme des champs d'autocomplétion */
+input#reference{
+  position: relative;
+}
+
+input#reference ul{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  max-height: 200px;
+  overflow: auto;
+  z-index: 100;
+  border:1px solid #DDDDDD;
+  border-radius: 6px;
+  background-color: white;
+  padding: 5px;
+}
+
+span.ui-helper-hidden-accessible{
+  display: none !important;
+}
+
+.ui-state-focus {
+  color: #ffffff;
+  background-color: #428bca;
+}
+
+ul.nav-stacked {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 300px;
+    max-height: 200px;
+    overflow: auto;
+    z-index: 100;
+    border:1px solid #DDDDDD;
+    border-radius: 6px;
+    border-top-left-radius: 0px;
+    background-color: white;
+    padding: 5px;
+}
+
+td.border-no {
+  border: none !important;
+}
+.tag {
+  margin:0; padding: 0;
+  display: inline-block;
+  width: calc(100% / 5);
+
+  text-align: center;
+}
+.tag:hover {
+  background-color: silver;
+}
+.tag-border {
+  border: 1px solid gray;
+  border-radius: 5px;
+}

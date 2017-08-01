@@ -1,0 +1,82 @@
+{# /src/Geograph/CodetBundle/Resources/views/Fournisseurs/view.html.twig #}
+
+{% extends "::layout.html.twig" %}
+
+{% block title %}{{ parent() }} - Fournisseur : {{ fournisseur.nom }}{% endblock %}
+
+{% block titre %}
+  <span id="fournisseurId" data="{{ fournisseur.id }}"></span>
+  <small>Fournisseur :</small> {{ fournisseur.prenom }} {{ fournisseur.nom }}
+  {% if fournisseur.raisonsociale is defined	and fournisseur.raisonsociale != null  %} ({{ fournisseur.raisonsociale }}){% endif %}
+{% endblock %}
+
+{% block fil_ariane %}
+    {{ parent() }}
+    <li><a href="{{ path('fournisseurs')}}">Fournisseurs</a></li>
+    <li class="active">{{ fournisseur.nom }}</li>
+{% endblock %}
+
+{% block toolbar %}
+
+  <li>
+    <div class="btn-group-vertical">
+      <button id="btnIndexFournisseurs" type="button" class="btn btn-default" title="Retour à la liste des fournisseurs">
+        <span class="fa fa-arrow-left fa-fw"></span>
+      </button>
+      <button id="btnEditFournisseur" type="button" class="btn btn-default" title="Editer ce fournisseur" data-idFournisseur="{{ fournisseur.id }}">
+        <span class="fa fa-edit fa-fw"></span>
+      </button>
+      <button id="btnNewProduit" type="button" class="btn btn-default" title="Ajouter un produit" data-idFournisseur="{{ fournisseur.id }}">
+        <span class="fa fa-plus fa-fw"></span>
+      </button>
+    </div>
+  </li>
+  <li>
+    <div class="btn-group-vertical">
+      <button id="btnFournisseurPrintTags" type="button" class="btn btn-default" title="Imprimer les étiquettes">
+        <span class="fa fa-tags fa-fw"></span>
+      </button>
+      <button id="btnFournisseurEtat" type="button" class="btn btn-default" title="Editer un état">
+        <span class="fa fa-print fa-fw"></span>
+      </button>
+    </div>
+  </li>
+
+{% endblock %}
+
+{% block content %}
+  <div class="col-sm-offset-1">
+
+      <!-- Nav tabs -->
+      <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation" class="active">
+          <a href="#coordonnees" aria-controls="coordonnees" role="tab" data-toggle="tab">Coordonnées</a>
+        </li>
+        <li role="presentation">
+          <a href="#compte" aria-controls="compte" role="tab" data-toggle="tab">Compte</a>
+        </li>
+        <li role="presentation">
+          <a href="#produits" aria-controls="produits" role="tab" data-toggle="tab">Produits</a>
+        </li>
+      </ul>
+
+      <!-- Tab panes -->
+      <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active" id="coordonnees">
+          {% include('proGestBundle:Fournisseur:inc_coordonnees.html.twig') %}
+        </div>
+        <div role="tabpanel" class="tab-pane" id="compte">
+          {% include('proGestBundle:Fournisseur:inc_compte.html.twig') %}
+        </div>
+        <div role="tabpanel" class="tab-pane" id="produits">
+          {% include('proGestBundle:Fournisseur:inc_produits.html.twig') %}
+        </div>
+      </div>
+
+  </div>
+
+  {% include('proGestBundle:inc:modal.html.twig')%}
+
+  {% include('proGestBundle:inc:modalTags.html.twig')%}
+
+{% endblock %}

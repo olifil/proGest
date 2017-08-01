@@ -1,0 +1,4 @@
+services:
+    gestion:
+        class: proGestBundle\Gestion\Gestion
+        arguments: [@doctrine.orm.entity_manager]

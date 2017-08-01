@@ -1,0 +1,37 @@
+{% extends '::print_layout.html.twig' %}
+
+{% block body %}
+
+    <h2 class="page-header">Etat initial de la boutique</h2>
+
+      {% for fournisseur in fournisseurs %}
+        <h3>{{ fournisseur.nom }} {{ fournisseur.prenom }}</h3>
+        <p class="col-md-offset-1">
+          {{ fournisseur.adresse }}<br />
+          {{ fournisseur.cp }} {{ fournisseur.ville }}
+        </p>
+        <div class="col-md-offset-1">
+          <table class="table table-striped table-condensed">
+            <tr>
+              <th class="text-center">Références</th>
+              <th class="text-center">Noms</th>
+              <th class="text-center">Descriptif</th>
+              <th class="text-center">Prix fournisseur</th>
+              <th class="text-center">Prix de vente</th>
+              <th class="text-center">Livrés</th>
+            </tr>
+            {% for article in fournisseur.articles %}
+            <tr>
+              <td>{{ article.reference }}</td>
+              <td>{{ article.nom }}</td>
+              <td>{{ article.descriptif|raw }}</td>
+              <td class="text-right">{{ article.prixachat|number_format(2) }} €</td>
+              <td class="text-right">{{ (article.prixachat / (1 + (boutique.marge / 100)))|number_format(2) }} €</td>
+              <td class="text-center">{{ article.livre }}</td>
+            </tr>
+          {% endfor %}
+          </table>
+        </div>
+      {% endfor %}
+
+{% endblock %}

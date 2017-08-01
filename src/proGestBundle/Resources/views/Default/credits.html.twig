@@ -1,0 +1,34 @@
+{% extends '::layout.html.twig' %}
+
+{% block titre %}Crédits{% endblock %}
+
+{% block content %}
+
+  <div class="row">
+    <div class="col-md-offset-1 col-md-2">
+      <a href="http://www.at2com.fr"><img src="{{ asset('bundles/progest/imgs/at2com.jpg')}}" class="img-responsive" /></a>
+    </div>
+    <div class="col-md-9">
+      <p>
+        <address>
+          <strong>@2com</strong><br>
+          9, rue de la Mairie<br>
+          82110 Lauzerte<br>
+          <abbr title="Téléphone">tél.</abbr> 05 63 32 50 35<br>
+          <a href="http://www.at2com.fr">www.at2com.fr</a><br>
+          <a href="mailto:contact@at2com.fr">contact@at2com.fr</a>
+        </address>
+
+        <address>
+          <strong>Olivier Fillol</strong><br>
+          <a href="mailto:olivier.fillol@at2com.fr">olivier.fillol@at2com.fr</a>
+        </address>
+        <address>
+          <strong>Céline Lahaye</strong><br>
+          <a href="mailto:celine.lahaye@at2com.fr">celine.lahaye@at2com.fr</a>
+        </address>
+      </p>
+    </div>
+  </div>
+
+{% endblock %}

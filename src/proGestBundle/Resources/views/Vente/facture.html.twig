@@ -1,0 +1,84 @@
+{% extends '::print_layout.html.twig' %}
+
+{% block body %}
+  <h2 class="page-header">Facture n° {{ vente.id }} <small>- {{ "now"|date('d/m/Y')}}</small></h2>
+  {% if boutique != null  and boutique.isActive == true %}
+  <div class="row">
+    <div class="col-md-offset-1 col-md-11">
+
+      <table class="table table-striped table-bordered table-condensed">
+          {% if vente.prenomClient %}
+            <tr>
+              <th class="text-right">Prénom</th>
+              <th>{{ vente.prenomClient }}</th>
+            </tr>
+          {% endif %}
+          {% if vente.nomClient %}
+            <tr>
+              <th class="text-right">Nom</th>
+              <th>{{ vente.nomClient }}</th>
+            </tr>
+          {% endif %}
+          {% if vente.adresseClient or vente.cpClient or vente.communeClient %}
+            <tr>
+              <th class="text-right">Adresse</th>
+              <th>{{ vente.adresseClient }} - {{ vente.cpClient }} {{ vente.communeClient|upper }}</th>
+            </tr>
+          {% endif %}
+          {% if vente.nbrArticles %}
+            <tr>
+              <th class="text-right">Nombres d'articles</th>
+              <th>{{ vente.nbrArticles }}</th>
+            </tr>
+          {% endif %}
+          {% if vente.totalVente %}
+            <tr>
+              <th class="text-right">Montant total</th>
+              <th>{{ vente.totalVente|number_format(2) }} €</th>
+            </tr>
+          {% endif %}
+      </table>
+
+      <h3>Liste des produits</h3>
+
+      <table class="table table-striped table-bordered table-condensed table-responsive">
+        <thead>
+          <tr>
+            <th class="text-center">Référence</th>
+            <th class="text-center">Désignation</th>
+            <th class="text-center">Quantité</th>
+            <th class="text-center">PU</th>
+            <th class="text-center">Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for variation in vente.variations %}
+          <tr>
+            <td class="text-center">{{ variation.article.reference }}</td>
+            <td>{{ variation.article.nom }}</td>
+            <td class="text-center">{{ variation.quantite * -1 }}</td>
+            <td class="text-right">{{ variation.article.prixAchat|number_format(2) }} €</td>
+            <td class="text-right">{{ (variation.article.prixAchat * (variation.quantite * -1))|number_format(2) }} €</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="3" class="border-no"></td>
+            <th class="text-right">Nbr d'articles</th>
+            <td class="text-right">{{ vente.nbrArticles }}</td>
+          </tr>
+          <tr>
+            <td colspan="3" class="border-no"></td>
+            <th class="text-right">Montant total</th>
+            <td class="text-right">{{ vente.totalvente|number_format(2) }} €</td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+  </div>
+  {% else %}
+    Vous n'avez pas l'autorisation d'accéder à cette page.
+  {% endif %}
+
+{% endblock %}

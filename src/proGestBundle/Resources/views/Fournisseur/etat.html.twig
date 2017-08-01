@@ -1,0 +1,45 @@
+<h2>{{ boutique.nom }}</h2>
+<ul>
+  <li>{{ boutique.adresse }}</li>
+  <li>{{ boutique.codePostal }} {{ boutique.commune }}</li>
+</ul>
+
+<h2>{{ fournisseur.nom }}</h2>
+<ul>
+  <li>{{ fournisseur.adresse }}</li>
+  <li>{{ fournisseur.cp }} {{ fournisseur.ville }}</li>
+</ul>
+<h1>Situation au {{ "now"|date("d/m/Y") }}</h1>
+<table>
+  <thead>
+    <tr>
+      <th colspan="9">Détail des produits</th>
+    </tr>
+    <tr>
+      <th>Réf.</th>
+      <th>Désignation</th>
+      <th>Q Livrée</th>
+      <th>Q Vendue</th>
+      <th>Solde Quantité</th>
+      <th>Prix unitaire</th>
+      <th>CA Total</th>
+      <th>Dont marge {{ boutique.marge }}</th>
+      <th>Solde</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for article in fournisseur.articles %}
+      <tr>
+        <td>{{ article.reference }}</td>
+        <td>{{ article.nom }}</td>
+        <td>{{ article.livre }}</td>
+        <td>{{ article.vendu }}</td>
+        <td>{{ article.livre - article.vendu }}</td>
+        <td>{{ article.prixAchat }} €</td>
+        <td>{{ article.vendu * article.prixAchat }} €</td>
+        <td>{{ article.vendu * article.prixAchat * boutique.marge }} €</td>
+        <td>{{ (article.vendu * article.prixAchat) - (article.vendu * article.prixAchat * boutique.marge) }} €</td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>

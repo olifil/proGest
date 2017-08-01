@@ -1,0 +1,59 @@
+{# Affichage du contenu de l'onglet stocks #}
+
+<div id="stocks" class="onglet">
+  <div class="row">
+    <div class="col-sm-offset-1 col-sm-3">
+        <table class="table table-bordered table-condensed">
+          <tr>
+            <th class="text-right td-20">Quantité livrée</th>
+            <td class="text-center">{{ article.livre }}</td>
+          </tr>
+          <tr>
+            <th class="text-right">Quantité vendue</th>
+            <td class="text-center">{{ article.vendu }}</td>
+          </tr>
+          <tr>
+            <th class="text-right">Quantité en stock</th>
+            <td class="text-center">{{ article.stock }}</td>
+          </tr>
+        </table>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-offset-1 col-sm-10">
+      <h4>Historique</h4>
+      <table class="table table-bordered table-condensed">
+        <thead>
+          <tr>
+            <th class="text-center">Date</th>
+            <th class="text-center">Type</th>
+            <th class="text-center">Quantité</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% if article.variations|length == null %}
+          <tr>
+            <td colspan="3">
+              Il n'y a pas eu encore de variation de stock pour cet article.
+            </td>
+          </tr>
+          {% endif %}
+          {% for variation in article.variations %}
+          <tr>
+            <td class="text-center">{{ variation.date|date('d/m/Y')}}</td>
+            <td class="text-center">
+              {% if variation.quantite >0 %}
+                Livraison
+              {% else %}
+                Vente
+              {% endif %}
+            </td>
+            <td class="text-center">{{ variation.quantite }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>

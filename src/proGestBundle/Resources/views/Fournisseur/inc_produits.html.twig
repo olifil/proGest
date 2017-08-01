@@ -1,0 +1,37 @@
+<div class="onglet">
+  <h3>Liste des articles</h3>
+  {% if fournisseur.articles|length == null %}
+    <p>Vous n'avez par d'articles référencés pour ce fournisseur.</p>
+    <p>
+      <button id="btnProduitAdd" type="button" class="btn btn-info btns-sm" title="Ajouter un produit" data-idFournisseur="{{ fournisseur.id }}">
+        <span class="fa fa-plus"></span> Nouveau produit
+      </button>
+    </p>
+  {% endif %}
+  <div class="row">
+    {% for article in fournisseur.articles %}
+      <div class="col-sm-2">
+        <div class="widget widget-border icon icon-article">
+          <h4>
+            <a href="{{ path('article-view', {'id': article.id }) }}" title="Consulter la fiche produit">{{ article.nom }}</a>
+
+            {% if article.stock %}
+              <span id="badgeStock_{{ article.id }}" class="badge" title="{{ article.stock }} article(s) en stock">{{ article.stock }}</span>
+            {% else %}
+              <span id="badgeStock_{{ article.id }}" class="badge" title="Aucun article en stock">0</span>
+            {% endif %}
+
+          </h4>
+          <div class="quantite">
+            <div class="input-group input-group-sm">
+              <input id="inputQuantite_{{ article. id }}" type="number" class="form-control" value="1" min="1" />
+              <span class="input-group-btn">
+                <button id="btnLivraison_{{ article. id }}" class="btn btn-default" type="button" title="Enregistrer une livraison"><span class="fa fa-cart-arrow-down"></span></button>
+              </span>
+            </div><!-- /input-group -->
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>

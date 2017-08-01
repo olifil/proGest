@@ -1,0 +1,113 @@
+{% extends '::print_layout.html.twig' %}
+
+{% block body %}
+
+  <h2 class="page-header">Solde du compte "{{ fournisseur.prenom }} {{ fournisseur.nom }}"<span id="fournisseurId" data="{{ fournisseur.id }}"></span></h2>
+  <div class=""row>
+    <h3>Chiffres clés</h3>
+  </div>
+
+  <div class=""row>
+    <div class="col-md-offset-2">
+      <table class="table table-responsive table-striped table-condensed table-bordered table-hover">
+        <thead>
+          <tr>
+            <th class="text-center">Chiffre d'affaire</th>
+            <th class="text-center">dont marge ({{ boutique.marge }}%)</th>
+            <th class="text-center">Solde</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="text-center">{{ fournisseur.ca|number_format(2) }} €</td>
+            <td class="text-center">{{ fournisseur.marge|number_format(2) }} €</td>
+            <td class="text-center danger text-danger"><strong>{{ fournisseur.solde|number_format(2) }} €</strong></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class=""row>
+    <h3>Détail des opérations réalisées sur le compte</h3>
+  </div>
+
+  {% for article in articles %}
+    <div class=""row>
+      <h4><span class="col-md-2"><small>{{ article.reference }}</small></span>{{ article.nom }}</h4>
+    </div>
+
+    <div class=""row>
+      <div class="col-md-offset-2">
+        <h5>Détail des variations de stock</h5>
+      </div>
+    </div>
+
+    <div class=""row>
+      <div class="col-md-offset-2">
+        <table class="table table-responsive table-striped table-condensed table-bordered table-hover">
+          <thead>
+            <tr>
+              <th class="text-center">Date</th>
+              <th class="text-center">Type</th>
+              <th class="text-center">Quantité</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for variation in article.variations %}
+            <tr>
+              <td class="text-center">{{ variation.date|date('d-m-Y') }}</td>
+              <td class="text-center">{% if variation.quantite > 0 %}Livraison{% else %}Vente{% endif %}</td>
+              <td class="text-center">{{ variation.quantite }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class=""row>
+      <div class="col-md-offset-2">
+        <h5>Détail Financier</h5>
+      </div>
+    </div>
+
+    <div class=""row>
+      <div class="col-md-offset-2">
+        <table class="table table-responsive table-condensed table-bordered table-hover">
+          <thead>
+            <tr>
+              <th class="text-center">Prix Unitaire</th>
+              <th class="text-center">Livré</th>
+              <th class="text-center">Vendu</th>
+              <th class="text-center">stock</th>
+              <th class="text-center">Total</th>
+              <th class="text-center">Marge ({{ boutique.marge }}%)</th>
+              <th class="text-center">Solde</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="text-center">{{ article.prixAchat|number_format(2) }} €</td>
+              <td class="text-center">{{ article.livre }}</td>
+              <td class="text-center">{{ article.vendu }}</td>
+              <td class="text-center">{{ article.stock }}</td>
+              <td class="text-center">{{ (article.vendu * article.prixAchat)|number_format(2) }} €</td>
+              <td class="text-center">{{ (article.vendu * article.prixAchat * (boutique.marge / 100))|number_format(2) }} €</td>
+              <td class="text-center danger text-danger">{{ ((article.vendu * article.prixAchat) - (article.vendu * article.prixAchat * (boutique.marge / 100)))|number_format(2) }} €</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  {% endfor %}
+
+  <script type="text/javascript">
+    $(document).ready(function(){
+      console.log('Script');
+      var fournisseurId = $('#fournisseurId').attr('data');
+      window.open(Routing.generate('fournisseur_letter', {id: fournisseurId}), '_blank');
+    });
+  </script>
+
+{% endblock %}

@@ -1,0 +1,86 @@
+# Controller des Fournisseurs
+fournisseurs:
+    path:     /
+    defaults: { _controller: proGestBundle:Fournisseur:index }
+    options:
+        expose: true
+
+fournisseurs_print:
+    path:     /list
+    defaults: { _controller: proGestBundle:Fournisseur:indexPrint }
+    options:
+        expose: true
+
+fournisseur_etat:
+    path:     /{id}/etat
+    defaults: { _controller: proGestBundle:Fournisseur:etatPrint }
+    options:
+        expose: true
+
+fournisseur-view:
+    path:     /{id}
+    defaults: { _controller: proGestBundle:Fournisseur:view }
+    requirements:
+        id:   \d+
+    options:
+        expose: true
+
+fournisseur-add:
+    path:     /add
+    defaults: { _controller: proGestBundle:Fournisseur:add }
+    options:
+        expose: true
+
+fournisseur-edit:
+    path:     /edit/{id}
+    defaults: { _controller: proGestBundle:Fournisseur:edit }
+    requirements:
+        id:   \d+
+    options:
+        expose: true
+
+fournisseur-del:
+    path:     /del/{id}
+    defaults: { _controller: proGestBundle:Fournisseur:del }
+    requirements:
+        id:   \d+
+
+fournisseur-etat:
+    path:     /{id}/etat
+    defaults: { _controller: proGestBundle:Fournisseur:etat }
+    requirements:
+        id:   \d+
+
+fournisseur_sold:
+    path:     /{id}/sold
+    defaults: { _controller: proGestBundle:Fournisseur:sold }
+    requirements:
+        id:   \d+
+    options:
+        expose: true
+
+fournisseur_letter:
+    path:     /{id}/letter
+    defaults: { _controller: proGestBundle:Fournisseur:RenderLetter }
+    requirements:
+        id:   \d+
+    options:
+        expose: true
+
+
+# Impression des étiquettes
+fournisseurs_tags:
+    path:     /{tagStart}/tag/
+    defaults: { _controller: proGestBundle:Fournisseur:fournisseursTags }
+    requirements:
+        id:   \d+
+    options:
+        expose: true
+
+fournisseur_tags:
+    path:     /{id}/tag/{tagStart}
+    defaults: { _controller: proGestBundle:Fournisseur:fournisseurTags }
+    requirements:
+        id:   \d+
+    options:
+        expose: true

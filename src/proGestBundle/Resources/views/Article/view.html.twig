@@ -1,0 +1,92 @@
+{# /src/Geograph/CodetBundle/Resources/views/Article/view.html.twig #}
+
+{% extends "::layout.html.twig" %}
+
+{% block title %}{{ parent() }} - Article : {{ article.nom }}{% endblock %}
+
+{% block titre %}{{ article.nom }}{% endblock %}
+
+{% block javascripts %}
+  {{ parent() }}
+  <script type="text/javascript" src="{{ asset('bundles/progest/js/proGest_ArticleView.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('bundles/progest/js/ckeditor.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('bundles/progest/js/article.js') }}"></script>
+{% endblock %}
+
+{% block fil_ariane %}
+    {{ parent() }}
+    <li><a href="{{ path('fournisseurs')}}" title="{{ article.fournisseur.nom }}">Fournisseurs</a></li>
+    <li><a href="{{ path('fournisseur-view', {'id': article.fournisseur.id })}}" title="{{ article.fournisseur.nom }}">{{ article.fournisseur.nom }}</a></li>
+    <li class="active">{{ article.nom }}</li>
+{% endblock %}
+
+{% block toolbar %}
+
+  <li>
+    <button id="btnArticleIndexFournisseur" type="button" class="btn btn-default" title="Retour au fournisseur" data="{{ article.fournisseur.id }}">
+      <span class="fa fa-arrow-left fa-fw"></span>
+    </button>
+  </li>
+  <li>
+    <button id="btnArticlePrintTags" type="button" class="btn btn-default" title="Imprimer les étiquettes">
+      <span class="fa fa-tag fa-fw"></span>
+    </button>
+  </li>
+
+{% endblock %}
+
+{% block content %}
+  <article id="articleId" class="col-md-offset-1" data="{{ article.id }}">
+
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs" role="tablist">
+      <li role="presentation" class="active">
+        <a href="#descriptif" aria-controls="descriptif" role="tab" data-toggle="tab">Descriptif</a>
+      </li>
+      <li role="presentation">
+        <a href="#tarifs" aria-controls="tarifs" role="tab" data-toggle="tab">Tarifs</a>
+      </li>
+      <li role="presentation">
+        <a href="#stocks" aria-controls="stocks" role="tab" data-toggle="tab">Stocks</a>
+      </li>
+    </ul>
+
+    <!-- Tab panes -->
+    <div class="tab-content">
+      <div role="tabpanel" class="tab-pane active" id="descriptif">
+        {% include('proGestBundle:Article:inc_descriptif.html.twig')%}
+      </div>
+      <div role="tabpanel" class="tab-pane" id="tarifs">
+        {% include('proGestBundle:Article:inc_tarifs.html.twig')%}
+      </div>
+      <div role="tabpanel" class="tab-pane" id="stocks">
+        {% include('proGestBundle:Article:inc_stocks.html.twig')%}
+      </div>
+    </div>
+
+    {# Fenêtre modale #}
+    {% include('proGestBundle:inc:modal.html.twig') %}
+
+    {% include('proGestBundle:inc:loader.html.twig') %}
+
+    {% include('proGestBundle:inc:modalTags.html.twig')%}
+
+    <script>
+      $('#descriptif a').click(function (e) {
+        e.preventDefault()
+        $(this).tab('show')
+      })
+
+      $('#tarifs a').click(function (e) {
+        e.preventDefault()
+        $(this).tab('show')
+      })
+
+      $('#stocks a').click(function (e) {
+        e.preventDefault()
+        $(this).tab('show')
+      })
+    </script>
+
+  </article>
+{% endblock %}

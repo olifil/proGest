@@ -1,0 +1,80 @@
+{% extends '::layout.html.twig' %}
+
+{% block titre %}Création de la boutique - {% if boutique.marge is defined %}<small>Marge : <span class="marge">{{ boutique.marge }}</span> % {% if boutique.isActive == false %}<a id="editMarge" href="{{ path('boutique_marge_edit') }}" class="btn btn-default btn-xs"><span class="fa fa-edit"></span>Editer</a>{% endif %}</small>{% endif %}{% endblock %}
+
+{% block toolbar %}
+  <li>
+    <div class="btn-group-vertical">
+      <button id="btnBoutiqueAdd" type="button" class="btn btn-default" title="Enregistrer les modifications">
+        <span class="fa fa-save"></span>
+      </button>
+      <button id="btnUndo" type="button" class="btn btn-default" title="Annuler">
+        <span class="fa fa-times"></span>
+      </button>
+    </div>
+  </li>
+{% endblock %}
+
+{% block content %}
+
+    {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+
+      <div class="form-group">
+        {{ form_label(form.nom, "Nom de la boutique", {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+          <div class="col-sm-6">
+            {{ form_widget(form.nom, {'attr': {'class': 'form-control'}}) }}
+          </div>
+      </div>
+
+      <div class="form-group">
+        {{ form_label(form.adresse, "Adresse", {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+          <div class="col-sm-6">
+            {{ form_widget(form.adresse, {'attr': {'class': 'form-control'}}) }}
+          </div>
+      </div>
+
+      <div class="form-group">
+        {{ form_label(form.codepostal, "Code postal", {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+          <div class="col-sm-2">
+            {{ form_widget(form.codepostal, {'attr': {'class': 'form-control'}}) }}
+          </div>
+      </div>
+
+      <div class="form-group">
+        {{ form_label(form.ville, "Ville", {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+          <div class="col-sm-4">
+            {{ form_widget(form.ville, {'attr': {'class': 'form-control'}}) }}
+          </div>
+      </div>
+
+      <div class="form-group">
+        {{ form_label(form.telephone, "Téléphone", {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+          <div class="col-sm-2">
+            {{ form_widget(form.telephone, {'attr': {'class': 'form-control'}}) }}
+          </div>
+      </div>
+
+      <div class="form-group">
+        {{ form_label(form.email, "Email", {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+        <div class="col-sm-2">
+          <div class="input-group input-group-sm">
+            <span class="input-group-addon" id="basic-addon2">@</span>
+            {{ form_widget(form.email, {'attr': {'class': 'form-control'}}) }}
+          </div>
+        </div>
+      </div>
+
+      {% if form.marge is defined  %}
+      <div class="form-group">
+        {{ form_label(form.marge, "Marge commerciale", {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+        <div class="col-sm-2">
+          <div class="input-group input-group-sm">
+            {{ form_widget(form.marge, {'attr': {'class': 'form-control', 'min': 0}}) }}
+            <span class="input-group-addon" id="basic-addon2">%</span>
+          </div>
+        </div>
+      </div>
+      {% endif %}
+    {{ form_end(form) }}
+
+{% endblock %}

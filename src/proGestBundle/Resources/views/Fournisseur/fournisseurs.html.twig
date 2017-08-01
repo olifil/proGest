@@ -1,0 +1,59 @@
+{# /src/Geograph/CodetBundle/Resources/views/Fournisseur/fournisseurs.html.twig #}
+
+{% extends "::layout.html.twig" %}
+
+{% block title %}{{ parent() }} - Liste des fournisseurs{% endblock %}
+
+{% block titre %}
+  Liste des fournisseurs
+{% endblock %}
+
+{% block fil_ariane %}
+    {{ parent() }}
+    <li class="active">Fournisseurs</li>
+{% endblock %}
+
+{% block toolbar %}
+  <li>
+    <button id="btnAddFournisseur" type="button" class="btn btn-default" title="Ajouter un fournisseur">
+      <span class="fa fa-plus fa-fw"></span>
+    </button>
+  </li>
+  {% if fournisseurs|length > 0 %}
+  <li>
+    <div class="btn-group-vertical">
+      <button id="btnFournisseurPrintTags" type="button" class="btn btn-default" title="Imprimer toutes les étiquettes">
+        <span class="fa fa-tags fa-fw"></span>
+      </button>
+      <button id="btnPrintFournisseursList" type="button" class="btn btn-default" title="Imprimer la liste des fournisseurs">
+        <span class="fa fa-print fa-fw"></span>
+      </button>
+    </div>
+  </li>
+  {% endif %}
+{% endblock %}
+
+{% block content %}
+    <article class="col-md-offset-1">
+
+      {% if fournisseurs|length > 0 %}
+      {% for fournisseur in fournisseurs %}
+        <div class="col-sm-2">
+          <div class="widget widget-border icon icon-fournisseur">
+            <p class="edit"><a href="{{ path('fournisseur-edit', {'id': fournisseur.id }) }}" class="btn btn-default btn-xs" title="Editer ce fournisseur"><span class='fa fa-pencil'></span></a></p>
+            <h4>
+              <a href="{{ path('fournisseur-view', {'id': fournisseur.id }) }}" title="Accéder aux produits">{{ fournisseur.nom }} {{ fournisseur.prenom}}</a>
+                <span class="badge" title="{{ fournisseur.articles|length }} article(s) pour ce fournisseur">{{ fournisseur.articles|length }}</span>
+            </h4>
+          </div>
+        </div>
+      {% endfor %}
+
+      {% else %}
+      <p>Il n'y a pour l'instant aucun fournisseur dans votre boutique.</p>
+      {% endif %}
+
+    </article>
+
+    {% include('proGestBundle:inc:modalTags.html.twig')%}
+{% endblock %}

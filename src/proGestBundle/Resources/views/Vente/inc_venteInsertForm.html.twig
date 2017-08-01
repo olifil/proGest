@@ -1,0 +1,33 @@
+<tr id="ligne_{{ article.id }}">
+  <td>
+    <input id="articleReference_{{ article.id}}" type="text" name="name" value="{{ article.reference }}" disabled="" class="form-control">
+  </td>
+  <td>
+    <input type="text" name="name" value="{{ article.nom }}" disabled="" class="form-control">
+  </td>
+  <td class="text-center">
+    <div class="input-group">
+      <input id="articleQuantite_{{ article.id}}" type="number" name="name" value="{{ quantite }}" disabled="" class="form-control">
+      <span class="input-group-addon" id="basic-addon2">U</span>
+    </div>
+  </td>
+  <td class="text-right">
+    <div class="input-group">
+      <input id="articlePrix_{{ article.id}}" type="text" name="name" value="{{ prixVente|number_format(2) }}" disabled="" class="form-control">
+      <span class="input-group-addon" id="basic-addon2">€</span>
+    </div>
+  </td>
+  <td class="text-right">
+    <div class="input-group">
+      <input id="articlePrixTotal_{{ article.id}}" type="text" name="name" value="{{ (prixVente * quantite)|number_format(2) }}" disabled="" class="form-control">
+      <span class="input-group-addon" id="basic-addon2">€</span>
+    </div>
+  </td>
+  <td class="text-center">
+    <div class="btn-group btn-group-sm">
+      <button id="btnProductDel_{{ article.id }}" type="button" name="button" class="btn btn-default" title="Supprimer cet article">
+        <span class=" text-danger fa fa-trash-o"></span>
+      </button>
+    </div>
+  </td>
+</tr>

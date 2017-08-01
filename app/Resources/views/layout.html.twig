@@ -1,0 +1,104 @@
+{# /app/Resources/views/layout.html.twig #}
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}proGest{% endblock %}</title>
+
+    {% block stylesheets %}
+    <link rel="icon" type="image/png" href="{{ asset('bundles/proGest/imgs/favicon.png') }}" />
+    <link rel="stylesheet" href="{{ asset('bundles/progest/css/bootstrap.min.css') }}" media="screen" charset="utf-8" />
+    <link rel="stylesheet" href="{{ asset('bundles/progest/css/bootstrap-theme.min.css') }}" media="screen" charset="utf-8" />
+    <link rel="stylesheet" href="{{ asset('bundles/progest/css/bootstrap-tabs-x.min.css') }}" media="screen" charset="utf-8" />
+    <link rel="stylesheet" href="{{ asset('bundles/progest/css/font-awesome.min.css') }}" media="screen" charset="utf-8" />
+    <link rel="stylesheet" href="{{ asset('bundles/progest/css/lobibox.css') }}" media="screen" charset="utf-8" />
+    <link rel="stylesheet" href="{{ asset('bundles/progest/css/proGest.css') }}" media="screen" charset="utf-8" />
+    {% endblock %}
+
+    {% block javascripts %}
+    <script type="text/javascript" src="{{ asset('bundles/progest/js/jquery.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/progest/js/bootstrap.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/progest/js/bootstrap-tabs-x.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/progest/js/lobibox.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/progest/js/messageboxes.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/progest/js/notifications.js') }}"></script>
+
+    <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+    <script src="{{ path('fos_js_routing_js', {'callback': 'fos.Router.setData'}) }}"></script>
+
+    <script type="text/javascript" src="{{ asset('bundles/progest/js/proGest.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/progest/js/proGest.toolbarButton.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/progest/js/proGest.modal.js') }}"></script>
+    {% endblock %}
+</head>
+<body>
+    <div class="container-fluid">
+      {# Navigation #}
+        <header class="row">
+          <div class="col-sm-12">
+            {{ render(controller('proGestBundle:Default:navigation'))}}
+          </div>
+        </header>
+
+        <section class="row">
+          <div class="col-sm-offset-1 col-sm-11 section">
+
+            <ol id="fil_ariane" class="breadcrumb">
+                {% block fil_ariane %}
+                    <li><a href="{{ path('homepage') }}">Accueil</a></li>
+                {% endblock %}
+            </ol>
+
+            <h1 id="titre-page" class="page-header">
+              {% block titre %}{% endblock %}
+            </h1>
+
+            <div class="toolbar">
+              <ul>
+                <li>
+                  <button id="btnHomepage" type="button" class="btn btn-default" title="Accueil de la boutique">
+                    <span class="fa fa-dashboard fa-fw"></span>
+                  </button>
+                </li>
+              {% block toolbar %}
+              {% endblock %}
+              </ul>
+            </div>
+            {% for message in app.session.flashbag.get('success') %}
+            <div class="row">
+              <p class="col-sm-offset-1 col-sm-7 alert alert-success">{{ message }}</p>
+            </div>
+            {% endfor %}
+            {% for message in app.session.flashbag.get('info') %}
+            <div class="row">
+              <p class="col-sm-offset-1 col-sm-7 alert alert-warning">{{ message }}</p>
+            </div>
+            {% endfor %}
+
+            {% block content %}
+            {% endblock %}
+          </div>
+        </section>
+
+        <footer class="row">
+          <div class="col-sm-offset-1 col-sm-11 footer">
+            {# Footer #}
+            <p class="text-right">
+            {% block footer %}
+            &copy; 2016 - géoGraph - Olivier Fillol
+            <a href="http://at2com.fr" target="_blank"><span class="fa fa-bookmark-o"></span></a>|
+            <a id="monMail"><span class="fa fa-envelope-o"></span></a>
+            {% endblock %}
+            </p>
+          </div>
+        </footer>
+
+    </div>
+
+    {% include('proGestBundle:inc:modal.html.twig') %}
+
+    {% block footerJavascripts %}{% endblock %}
+
+</body>
+</html>

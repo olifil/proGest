@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Impression des étiquettes</title>
+    <link rel="stylesheet" href="{{ asset('bundles/progest/css/tags.css')}}" media="all" charset="utf-8">
+  </head>
+  <body>
+    <div class="page">
+      
+        {# Etiquettes vides #}
+          {% if tagStart != 0 %}
+            {% for i in 0..(tagStart - 1) %}
+              <div class="tag"></div>
+            {% endfor %}
+          {% endif %}
+
+        {# Cas des Fournisseurs #}
+        {% if fournisseurs is defined %}
+          {% for fournisseur in fournisseurs %}
+            {% for article in fournisseur.articles %}
+              {% for i in 1..article.stock %}
+                <div class="tag"><span>{{ article.reference }}</span></div>
+              {% endfor %}
+            {% endfor %}
+          {% endfor %}
+        {% endif %}
+
+        {# Cas d'un seul fournisseur  #}
+        {% if articles is defined %}
+          {% for article in articles %}
+            {% for i in 1..article.stock %}
+              <div class="tag"><span>{{ article.reference }}</span></div>
+            {% endfor %}
+          {% endfor %}
+        {% endif %}
+
+        {# Cas d'un article #}
+        {% if article is defined %}
+          {% for i in 1..quantite %}
+            <div class="tag"><span>{{ article.reference }}</span></div>
+          {% endfor %}
+        {% endif %}
+
+    </div>
+  </body>
+</html>

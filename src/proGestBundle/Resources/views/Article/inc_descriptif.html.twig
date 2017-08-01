@@ -1,0 +1,21 @@
+{# Affichage du contenu de l'onglet Descriptif #}
+
+<div id="descriptif" class="onglet">
+
+  <h4><small>Référence : </small>{{ article.reference }}</h4>
+  <h4><small>Fournisseur : </small>{{ article.fournisseur.nom }}</h4>
+
+  <div class="col-sm-offset-1">
+      {{ article.descriptif|raw }}
+  </div>
+
+  <div class="col-sm-offset-1 btn-group btn-group-sm">
+    <button id="btnArticleEdit" type="button" name="button" class="btn btn-default">
+      <span class="fa fa-edit"></span> Editer
+    </button>
+    <button id="btnArticleDel" type="button" name="button" class="btn btn-danger">
+      <span class="fa fa-trash-o"></span> Supprimer
+    </button>
+  </div>
+
+</div>

@@ -1,0 +1,60 @@
+<div class="onglet">
+  <h3>Gestion du compte fournisseur</h3>
+  {% if boutique.isActive == null %}
+    <p>La boutique n'a pas encore été initialisée. Les données relatives à la gestion de compte de sont pas encore disponibles.</p>
+  {% else %}
+  <div class="row">
+    <div class="col-md-offset-2 col-md-7">
+      <table class="table table-condensed table-responsive">
+        <tr>
+          <th class="text-center">Chiffre d'affaire</th>
+          <th class="text-center">Marge à déduire</th>
+          <th class="text-center">Solde</th>
+        </tr>
+        <tr>
+          <td id="compte_ca" class="text-center">{{ fournisseur.ca|number_format(2) }} €</td>
+          <td id="compte_marge" class="text-center">{{ fournisseur.marge|number_format(2) }} €</td>
+          <td id="compte_solde" class="text-center">{{ fournisseur.solde|number_format(2) }} €</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      {% if fournisseur.issold == false %}
+      <button type="button" id="btnSold" name="button" class="btn btn-danger">
+        <span class="fa fa-money"></span> Solder
+      </button>
+      {% else %}
+      {# Affichage des boutons #}
+      <a href="#" id="btnSolde" class="btn btn-default"><span class="fa fa-eye"></span>&nbsp;Solde</a>
+      <a href="#" id="btnLettre" class="btn btn-default"><span class="fa fa-eye"></span>&nbsp;Lettre</a>
+      <a href="#" id="btnCSV" class="btn btn-default"><span class="fa fa-download"></span>&nbsp;CSV</a>
+      {% endif %}
+    </div>
+  </div>
+  {% endif %}
+</div>
+<script type="text/javascript">
+  $(document).ready(function(){
+
+    $('#btnSolde').on('click', function(e){
+      event.preventDefault();
+      console.log($(this).attr('id'));
+      window.open("{{ asset('Etats/Soldes/') ~ fournisseur.nom ~ '.html'}}", "_blank")
+    });
+
+    $('#btnLettre').on('click', function(e){
+      event.preventDefault();
+      console.log($(this).attr('id'));
+      window.open("{{ asset('Etats/Soldes/') ~ fournisseur.nom ~ "-courrier" ~ '.html'}}", "_blank")
+    });
+
+    $('#btnCSV').on('click', function(e){
+      event.preventDefault();
+      console.log($(this).attr('id'));
+      window.open("{{ asset('Etats/Soldes/') ~ fournisseur.nom ~ "-solde" ~ '.csv'}}", "_blank")
+    });
+
+  });
+</script>

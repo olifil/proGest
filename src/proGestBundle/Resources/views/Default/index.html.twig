@@ -1,0 +1,50 @@
+{% extends '::layout.html.twig' %}
+
+{% block titre %}Accueil de la boutique{% endblock %}
+
+{% block content %}
+
+  {% if boutique != null %}
+  <div class="row">
+    <div class="col-sm-offset-3 col-sm-6 col-xs-12">
+
+      {% if boutique.IsActive != null %}
+        <a href="{{ path('ventes')}}">
+          <div class="col-md-4 col-sm-12">
+            <div class="widget widget-border icon icon-article">
+              <h4>
+                Les ventes
+              </h4>
+              <p class="text-center"><span class="logo fa fa-shopping-bag fa-4x"></span></p>
+            </div>
+          </div>
+        </a>
+
+
+      {% endif %}
+
+      <a href="{{ path('fournisseurs')}}">
+        <div class="col-md-4 col-sm-12">
+          <div class="widget widget-border icon icon-article">
+            <h4>
+              Les fournisseurs
+            </h4>
+            <p class="text-center"><span class="logo fa fa-building-o fa-4x"></span></p>
+          </div>
+        </div>
+      </a>
+      <a href="{{ path('articles')}}">
+        <div class="col-md-4 col-sm-12">
+          <div class="widget widget-border icon icon-article">
+            <h4>
+              Les articles
+            </h4>
+            <p class="text-center"><span class="logo fa fa-archive fa-4x"></span></p>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+  {% endif %}
+
+{% endblock %}

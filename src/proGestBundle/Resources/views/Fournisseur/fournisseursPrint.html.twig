@@ -1,0 +1,28 @@
+{% extends '::print_layout.html.twig' %}
+
+{% block body %}
+
+    <h2 class="page-header">Liste des fournisseurs</h2>
+
+    <table class="table table-striped table-condensed">
+      <tr>
+        <th class="text-center">Nom</th>
+        <th class="text-center">Prénom</th>
+        <th class="text-center">Adresse</th>
+        <th class="text-center">Code Postal</th>
+        <th class="text-center">Commune</th>
+        <th class="text-center"></th>
+      </tr>
+      {% for fournisseur in fournisseurs %}
+      <tr>
+        <td>{{ fournisseur.nom }}</td>
+        <td class="text-center">{{ fournisseur.prenom }}</td>
+        <td>{{ fournisseur.adresse }}</td>
+        <td>{{ fournisseur.cp }}</td>
+        <td class="text-right">{{ fournisseur.ville }}</td>
+        <td class="text-right"></td>
+      </tr>
+    {% endfor %}
+    </table>
+
+{% endblock %}

@@ -1,0 +1,76 @@
+{% extends '::layout.html.twig' %}
+
+{% block titre %}Les ventes{% endblock %}
+
+{% block fil_ariane %}
+    {{ parent() }}
+    <li class="active">Ventes</li>
+{% endblock %}
+
+{% block toolbar %}
+  {{ parent() }}
+  <li>
+    <a id="btnVenteAdd" href="{{ path('vente-new') }}" class="btn btn-default" title="Enregistrer une vente">
+      <span class="fa fa-plus fa-fw"></span>
+    </a>
+  </li>
+{% endblock %}
+
+{% block content %}
+
+  {% if boutique != null  and boutique.isActive == true %}
+  <div class="row margin-bottom">
+    <div class="col-md-offset-1 col-md-11">
+      <a href="{{ path('removeNonValidVente') }}" class="btn btn-info" title="Supprimer les ventes non validées.">Nettoyer les ventes</a>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-offset-1 col-md-11">
+
+      <table class="table table-striped table-bordered table-condensed table-responsive">
+        <thead>
+          <tr>
+            <th class="text-center">id</th>
+            <th class="text-center">Validée</th>
+            <th class="text-center">Date</th>
+            <th class="text-center">Nbr Articles</th>
+            <th class="text-center">Montant</th>
+            <th class="text-center t-15">Dont marge ({{ boutique.marge }} %)</th>
+            <th class="text-center">Solde</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for vente in ventes %}
+
+            <tr>
+              <td class="text-center"><a href="{{ path('vente_show', {'id': vente.id})}}">{{ vente.id }}</a></td>
+              <td class="text-center t-5">{% if vente.isValidate == true %}<span class="text-success fa fa-check"></span>{% else %}<span class="text-danger fa fa-times"></span>{% endif %}</td>
+              <td class="text-center">{{ vente.dateVente|date('d/m/Y') }}</td>
+              <td class="text-center">{{ vente.nbrArticles }}</td>
+              <td class="text-right">{{ vente.totalVente|number_format(2) }} €</td>
+              <td class="text-right">{{ ( vente.totalvente * boutique.marge /100 )|number_format(2) }} €</td>
+              <td class="text-right">{{ ( vente.totalVente - ( vente.totalvente * boutique.marge /100 ))|number_format(2) }} €</td>
+            </tr>
+
+          {% endfor %}
+        </tbody>
+        <tfoot>
+          <tr>
+            <td class="border-no"></td>
+            <td class="border-no"></td>
+            <th class="text-right">Totaux</th>
+            <th class="text-center"> {{ arts }}</th>
+            <th class="text-right">{{ ca|number_format(2) }} €</th>
+            <th class="text-right">{{ (ca * boutique.marge / 100)|number_format(2) }} €</th>
+            <th class="text-right">{{ ( ca - ( ca * boutique.marge / 100 ))|number_format(2) }} €</th>
+          </tr>
+        </tfoot>
+      </table>
+
+    </div>
+  </div>
+  {% else %}
+    Vous n'avez pas l'autorisation d'accéder à cette page.
+  {% endif %}
+
+{% endblock %}

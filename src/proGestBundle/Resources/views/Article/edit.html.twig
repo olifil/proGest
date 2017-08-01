@@ -1,0 +1,68 @@
+<div class="row">
+  <div class="col-sm-12">
+    {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+      {{ form_errors(form) }}
+
+      <div class="form-group">
+          {{ form_label(form.nom, "Nom", {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+          {{ form_errors(form.nom) }}
+          <div class="col-sm-9">
+              {{ form_widget(form.nom, {'attr': {'class': 'form-control'}}) }}
+          </div>
+      </div>
+
+      <div class="form-group">
+          <label for="" class="col-sm-2 control-label">Fournisseur</label>
+          <div class="col-sm-9">
+              <select id="fournisseur" class="form-control" name="fournisseur" required="">
+                <option value="default">-- Sélectionnez un fournisseur --</option>
+                {% for fournisseur in fournisseurs %}
+                  <option value="{{ fournisseur.id }}" {% if fournisseur.id == article.fournisseur.id %}selected=""{% endif %}>{{ fournisseur.nom }} {{ fournisseur.prenom }}</option>
+                {% endfor %}
+              </select>
+          </div>
+      </div>
+
+      <div class="form-group">
+          {{ form_label(form.descriptif, "Descriptif", {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+          {{ form_errors(form.descriptif) }}
+          <div class="col-sm-9">
+              {{ form_widget(form.descriptif, {'attr': {'class': 'form-control'}}) }}
+          </div>
+      </div>
+
+      <div class="form-group has-warning has-feedback">
+          {{ form_label(form.prixAchat, "Prix de vente", {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+          {{ form_errors(form.prixAchat) }}
+          <div class="col-sm-3">
+            <div class="input-group input-group-sm">
+              <span class="input-group-addon" id="basic-addon2">€</span>
+              {% if boutique.isActive %}
+              {{ form_widget(form.prixAchat, {'attr': {'class': 'form-control', 'disabled': 'disabled'}}) }}
+              {% else %}
+              {{ form_widget(form.prixAchat, {'attr': {'class': 'form-control'}}) }}
+              {% endif %}
+              <span class="glyphicon glyphicon-warning-sign form-control-feedback" aria-hidden="true"></span>
+              <span id="inputWarning2Status" class="sr-only">(warning)</span>
+            </div>
+          </div>
+      </div>
+
+      {# Prix par volumes #}
+
+      <input id="form-add" name="form-add" type="hidden" value="false" />
+
+      {{ form_rest(form) }}
+
+    {{ form_end(form) }}
+
+  </div>
+</div>
+
+    <script>
+        $(document).ready(function(){
+            CKEDITOR.replace('article_descriptif', {
+                language: 'fr'
+            });
+        })
+    </script>

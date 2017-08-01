@@ -1,0 +1,24 @@
+<div class="onglet">
+  <table class="table">
+    <tr>
+      <th class="text-right t-10">Adresse :</th>
+      <td>
+        {% if fournisseur.adresse == null %}Non renseigné{% endif %}
+        {{ fournisseur.adresse }}<br />
+        {{ fournisseur.cp }} {{ fournisseur.ville }}
+      </td>
+    </tr>
+    <tr>
+      <th class="text-right t-10">Contact :</th>
+      <td>{% if fournisseur.adresse == null %}Non renseigné{% endif %}{{ fournisseur.contact }}</td>
+    </tr>
+    <tr>
+      <th class="text-right t-10">Téléphone :</th>
+      <td>{% if fournisseur.tel == null %}Non renseigné{% endif %}{{ fournisseur.tel }}</td>
+    </tr>
+    <tr>
+      <th class="text-right t-10">Email :</th>
+      <td>{% if fournisseur.email == null %}Non renseigné{% endif %}<a href="mailto:{{ fournisseur.email }}">{{ fournisseur.email }}</a></td>
+    </tr>
+  </table>
+</div>

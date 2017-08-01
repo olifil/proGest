@@ -1,0 +1,26 @@
+prixmultiple_add:
+  path:     /add/{id}
+  defaults: { _controller: proGestBundle:Prixmultiple:add }
+  methods: POST
+  options:
+      expose: true
+
+prixmultiple_getPrixMultipleForm:
+  path:     /prixmultiplegetform
+  defaults: { _controller: proGestBundle:Prixmultiple:getPrixMultipleForm }
+  methods: GET
+  options:
+      expose: true
+
+prixmultiple_del:
+  path:     /del/{id}
+  defaults: { _controller: proGestBundle:Prixmultiple:del }
+  methods: POST
+  options:
+      expose: true
+
+# Route permettant de tester des fonctions
+prixmultiple_test:
+    path:     /{id}/temporaire
+    defaults: { _controller: proGestBundle:Prixmultiple:temporaire }
+    methods: GET

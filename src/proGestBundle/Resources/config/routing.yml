@@ -1,0 +1,84 @@
+homepage:
+    path:     /
+    defaults: { _controller: proGestBundle:Default:index }
+    options:
+        expose: true
+
+boutique-add:
+    path:     /boutique-add
+    defaults: { _controller: proGestBundle:Default:addBoutique }
+
+boutique-edit:
+    path:     /boutique-edit/{id}
+    defaults: { _controller: proGestBundle:Default:editBoutique }
+
+boutique-init:
+    path:     /boutique/init
+    defaults: { _controller: proGestBundle:Default:initBoutique }
+    options:
+        expose: true
+
+boutique_marge_edit:
+    path:     /boutique/edit_marge
+    defaults: { _controller: proGestBundle:Default:editMarge }
+    methods: GET
+    options:
+        expose: true
+
+boutique_marge_set:
+    path:     /boutique/set_marge
+    defaults: { _controller: proGestBundle:Default:setMarge }
+    methods: POST
+    options:
+        expose: true
+
+calculate:
+    path:   /json/calculate
+    defaults: { _controller: proGestBundle:Json:calculate }
+    methods: GET
+    options:
+      expose: true
+
+saison-clore:
+    path:     /clore-saison
+    defaults: { _controller: proGestBundle:Default:cloreSaison }
+    options:
+        expose: true
+
+etat_quotidien:
+    path:     /boutique/etat_quotidien
+    defaults: { _controller: proGestBundle:Default:etatQuotidien }
+    options:
+        expose: true
+
+fournisseur:
+    resource: "@proGestBundle/Resources/config/routing/fournisseur.yml"
+    prefix:   /fournisseur
+
+article:
+    resource: "@proGestBundle/Resources/config/routing/article.yml"
+    prefix:   /article
+
+prixmultiple:
+    resource: "@proGestBundle/Resources/config/routing/prixmultiple.yml"
+    prefix:   /prixmultiple
+
+vente:
+    resource: "@proGestBundle/Resources/config/routing/vente.yml"
+    prefix:   /vente
+
+get_MontantTotal:
+    path:     /quantite/{quantite}/prixUnitaire/{prixUnitaire}
+    defaults: { _controller:proGestBundle:Json:getMontantTotal }
+    requirements:
+        id:   \d+
+    options:
+        expose: true
+
+credits:
+    path:     /credits
+    defaults: { _controller:proGestBundle:Default:credits }
+
+backup:
+    path:     /backup
+    defaults: { _controller: proGestBundle:Default:bddBackup }

@@ -1,0 +1,67 @@
+# Routing des Ventes
+ventes:
+    path:     /
+    defaults: { _controller: proGestBundle:Vente:index }
+    options:
+        expose: true
+
+vente-new:
+    path:     /new
+    defaults: { _controller: proGestBundle:Vente:new }
+    options:
+        expose: true
+
+vente.add:
+    path: /add
+    defaults: { _controller: proGestBundle:Vente:addVente }
+    methods: POST
+    options:
+        expose: true
+
+vente_article_add:
+    path:     /{id}/articleAdd
+    defaults: { _controller: proGestBundle:Vente:articleAdd }
+    options:
+        expose: true
+
+vente_article_del:
+    path:     /{id}/articleDel
+    defaults: { _controller: proGestBundle:Vente:articleDel }
+    methods: [POST]
+    options:
+        expose: true
+
+vente_save:
+    path:     /{id}/save
+    defaults: { _controller: proGestBundle:Vente:save }
+    options:
+        expose: true
+
+vente_show:
+    path:     /{id}/show
+    defaults: { _controller: proGestBundle:Vente:show }
+    options:
+        expose: true
+
+vente_annuler:
+      path:     /{id}/annuler
+      defaults: { _controller: proGestBundle:Vente:annuler }
+      options:
+          expose: true
+
+facture:
+    path:     /{id}/facture
+    defaults: { _controller: proGestBundle:Vente:facture }
+    options:
+        expose: true
+
+removeNonValidVente:
+    path:     /removeNonValidVente
+    defaults: { _controller: proGestBundle:Vente:removeNonValidVente }
+
+recalcul_total:
+    path:     /recalculTotalVente/{id}
+    defaults: { _controller: proGestBundle:Json:recalculTotalVente }
+    methods: GET
+    options:
+        expose: true

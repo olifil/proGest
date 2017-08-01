@@ -1,0 +1,66 @@
+@media print {
+  body {
+    font-family: verdana, sans-serif;
+    font-size: 1em;
+    margin: 1cm;
+  }
+  body.A4 {
+
+  }
+  a[href]:after {
+     content: none !important;
+   }
+  .col-md-offset-2 { margin-left: 2.7cm;}
+  h1 {
+    margin: -50px 0 0 0; padding: 0;
+    font-size: 3em;
+  }
+  h2 {font-size: 2.5em;}
+  h3 {font-size: 2em;}
+  h4 {font-size: 1.5em;}
+  h5 {font-size: 1em;}
+  #imprimer, #csv {
+    display: none;
+  }
+  .page-header { margin-top: -1cm;}
+  .text-danger { color: red; }
+}
+
+@media all {
+  .credits {
+    border-top: 1px solid gray;
+    text-align: center;
+    padding-top: 10px;
+    margin: 60px 0 30px;
+  }
+  .civilite {
+    text-align: center;
+    margin: 4cm 0 1cm 0;
+  }
+  h3 { border-bottom: 1px solid gray;}
+  header {
+    width: 945px; height: 192px;
+    text-align: center;
+  }
+  main {
+    margin-left: 2.5cm;
+  }
+  .signature {
+    margin: 2cm 4cm 0 13cm;
+    text-align: center;
+  }
+  .fonction {
+    font-size: 0.8em;
+  }
+  .nom {
+    font-weight: bold;
+  }
+  footer {
+    width: 100%;
+    position: absolute;
+    border-top: 1px solid silver;
+    padding-top: 5mm;
+    bottom: 0px;
+    text-align: center;
+  }
+}

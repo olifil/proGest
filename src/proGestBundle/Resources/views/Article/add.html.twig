@@ -1,0 +1,117 @@
+{# /src/Geograph/CodetBundle/Resources/views/Categories/add.html.twig #}
+
+{% extends "::layout.html.twig" %}
+
+{% block title %}{{ parent() }} - Ajouter un article{% endblock %}
+
+{% block titre %}Ajouter un article{% endblock %}
+
+{% block javascripts %}
+  {{ parent() }}
+  <script type="text/javascript" src="{{ asset('bundles/progest/js/ckeditor.js') }}"></script>
+{% endblock %}
+
+{% block fil_ariane %}
+    {{ parent() }}
+    <li><a href="{{ path('articles')}}">Articles</a></li>
+    <li class="active">Ajout d'un article</li>
+{% endblock %}
+
+{% block toolbar %}
+  <li>
+    <div class="btn-group-vertical">
+      {% if fournisseurs|length > 0 %}
+      <button id="btnArticleSave" type="button" class="btn btn-default" title="Enregistrer les modifications">
+        <span class="fa fa-save"></span>
+      </button>
+      <button id="btnArticleSaveAdd" type="button" class="btn btn-default" title="Enregistrer et Nouveau">
+        <span class="fa fa-files-o"></span>
+      </button>
+      {% endif %}
+      <button id="btnArticleAddUndo" type="button" class="btn btn-default" title="Annuler">
+        <span class="fa fa-times"></span>
+      </button>
+    </div>
+  </li>
+{% endblock %}
+
+{% block content %}
+
+    {% if fournisseurs|length == 0 %}
+    <div class="row">
+      <p class="col-sm-offset-1 col-sm-7 alert alert-danger">
+        Vous ne pouvez pas créer d'article avant d'avoir créé de fournisseur.<br />
+        <a href="{{ path('fournisseur-add') }}" class="alert-link">En créer un</a>.
+      </p>
+    </div>
+    {% else %}
+
+    <form action="{{ path('article-add') }}" method="post" {{ form_enctype(form) }} class="form-horizontal">
+        {{ form_errors(form) }}
+
+        <div class="form-group">
+            {{ form_label(form.nom, "Nom", {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+            {{ form_errors(form.nom) }}
+            <div class="col-sm-8">
+                {{ form_widget(form.nom, {'attr': {'class': 'form-control'}}) }}
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="" class="col-sm-2 control-label">Fournisseur</label>
+            <div class="col-sm-5">
+                <select id="fournisseur" class="form-control" name="fournisseur" required="">
+                  <option value="default">-- Sélectionnez un fournisseur --</option>
+                  {% for fournisseur in fournisseurs %}
+                    <option value="{{ fournisseur.id }}" {% if fournisseur.id == idFournisseur %}selected=""{% endif %}>{{ fournisseur.nom }} {{ fournisseur.prenom }}</option>
+                  {% endfor %}
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            {{ form_label(form.descriptif, "Descriptif", {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+            {{ form_errors(form.descriptif) }}
+            <div class="col-sm-8">
+                {{ form_widget(form.descriptif, {'attr': {'class': 'form-control'}}) }}
+            </div>
+        </div>
+
+        <div class="form-group">
+            {{ form_label(form.prixAchat, "Prix de vente", {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+            {{ form_errors(form.prixAchat) }}
+            <div class="col-sm-2">
+              <div class="input-group input-group-sm">
+                {{ form_widget(form.prixAchat, {'attr': {'class': 'form-control', 'value': 0}}) }}
+                <span class="input-group-addon" id="basic-addon2">€</span>
+              </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            {{ form_label(form.livre, "Quantité livrée", {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+            {{ form_errors(form.livre) }}
+            <div class="col-sm-2">
+              <div class="input-group input-group-sm">
+                {{ form_widget(form.livre, {'attr': {'class': 'form-control', 'value': 0}}) }}
+                <span class="input-group-addon" id="basic-addon2" title="Unité">U</span>
+              </div>
+            </div>
+        </div>
+
+        <input id="form-add" name="form-add" type="hidden" value="false" />
+
+        {{ form_rest(form) }}
+
+    </form>
+
+    <script>
+        $(document).ready(function(){
+            CKEDITOR.replace('article_descriptif', {
+                language: 'fr'
+            });
+        })
+    </script>
+    {% endif %}
+
+{% endblock %}

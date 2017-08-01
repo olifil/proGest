@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CoDET - Initialisation</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/bundles/progest/css/print.css" media="all"/>
+
+    <script type="text/javascript" src="/bundles/progest/js/jquery.js"></script>
+    <script src="/bundles/fosjsrouting/js/router.js"></script>
+    <script src="/app.php/js/routing?callback=fos.Router.setData"></script>
+
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="container">
+      <div class="jumbotron">
+        <h1>Boutique CoDET</h1>
+        <p class="col-md-offset-1">
+          2, avenue du stade<br />
+          82150 Montaigu de Quercy
+        </p>
+        
+        <p id="imprimer" class="col-md-offset-1">
+          <a id="btnPrint" class="btn btn-primary btn-lg" href="#" role="button" title="Imprimer la page">
+            <span class="fa fa-print fa-fw"></span> Imprimer
+          </a>
+        </p>
+
+              </div>
+
+      
+  <h2 class="page-header">Solde du compte "Joel VIGOUROUX"<span id="fournisseurId" data="44"></span></h2>
+  <div class=""row>
+    <h3>Chiffres clés</h3>
+  </div>
+
+  <div class=""row>
+    <div class="col-md-offset-2">
+      <table class="table table-responsive table-striped table-condensed table-bordered table-hover">
+        <thead>
+          <tr>
+            <th class="text-center">Chiffre d'affaire</th>
+            <th class="text-center">dont marge (22%)</th>
+            <th class="text-center">Solde</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="text-center">457.00 €</td>
+            <td class="text-center">100.54 €</td>
+            <td class="text-center danger text-danger"><strong>356.46 €</strong></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class=""row>
+    <h3>Détail des opérations réalisées sur le compte</h3>
+  </div>
+
+      <div class=""row>
+      <h4><span class="col-md-2"><small>VIG-0273-6.00 €</small></span>vin blanc sec</h4>
+    </div>
+
+    <div class=""row>
+      <div class="col-md-offset-2">
+        <h5>Détail des variations de stock</h5>
+      </div>
+    </div>
+
+    <div class=""row>
+      <div class="col-md-offset-2">
+        <table class="table table-responsive table-striped table-condensed table-bordered table-hover">
+          <thead>
+            <tr>
+              <th class="text-center">Date</th>
+              <th class="text-center">Type</th>
+              <th class="text-center">Quantité</th>
+            </tr>
+          </thead>
+          <tbody>
+                        <tr>
+              <td class="text-center">06-07-2016</td>
+              <td class="text-center">Livraison</td>
+              <td class="text-center">30</td>
+            </tr>
+                        <tr>
+              <td class="text-center">09-07-2016</td>
+              <td class="text-center">Vente</td>
+              <td class="text-center">-3</td>
+            </tr>
+                        <tr>
+              <td class="text-center">23-07-2016</td>
+              <td class="text-center">Vente</td>
+              <td class="text-center">-1</td>
+            </tr>
+                        <tr>
+              <td class="text-center">30-07-2016</td>
+              <td class="text-center">Vente</td>
+              <td class="text-center">-1</td>
+            </tr>
+                        <tr>
+              <td class="text-center">08-08-2016</td>
+              <td class="text-center">Vente</td>
+              <td class="text-center">-1</td>
+            </tr>
+                        <tr>
+              <td class="text-center">12-08-2016</td>
+              <td class="text-center">Vente</td>
+              <td class="text-center">-1</td>
+            </tr>
+                        <tr>
+              <td class="text-center">13-08-2016</td>
+              <td class="text-center">Vente</td>
+              <td class="text-center">-1</td>
+            </tr>
+                        <tr>
+              <td class="text-center">20-08-2016</td>
+              <td class="text-center">Vente</td>
+              <td class="text-center">-1</td>
+            </tr>
+                      </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class=""row>
+      <div class="col-md-offset-2">
+        <h5>Détail Financier</h5>
+      </div>
+    </div>
+
+    <div class=""row>
+      <div class="col-md-offset-2">
+        <table class="table table-responsive table-condensed table-bordered table-hover">
+          <thead>
+            <tr>
+              <th class="text-center">Prix Unitaire</th>
+              <th class="text-center">Livré</th>
+              <th class="text-center">Vendu</th>
+              <th class="text-center">stock</th>
+              <th class="text-center">Total</th>
+              <th class="text-center">Marge (22%)</th>
+              <th class="text-center">Solde</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="text-center">6.00 €</td>
+              <td class="text-center">30</td>
+              <td class="text-center">9</td>
+              <td class="text-center">21</td>
+              <td class="text-center">54.00 €</td>
+              <td class="text-center">11.88 €</td>
+              <td class="text-center danger text-danger">42.12 €</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+      <div class=""row>
+      <h4><span class="col-md-2"><small>VIG-0274-6.00 €</small></span>ratafia blanc</h4>
+    </div>
+
+    <div class=""row>
+      <div class="col-md-offset-2">
+        <h5>Détail des variations de stock</h5>
+      </div>
+    </div>
+
+    <div class=""row>
+      <div class="col-md-offset-2">
+        <table class="table table-responsive table-striped table-condensed table-bordered table-hover">
+          <thead>
+            <tr>
+              <th class="text-center">Date</th>
+              <th class="text-center">Type</th>
+              <th class="text-center">Quantité</th>
+            </tr>
+          </thead>
+          <tbody>
+                        <tr>
+              <td class="text-center">06-07-2016</td>
+              <td class="text-center">Livraison</td>
+              <td class="text-center">14</td>
+            </tr>
+                        <tr>
+              <td class="text-center">09-07-2016</td>
+              <td class="text-center">Vente</td>
+              <td class="text-center">-1</td>
+            </tr>
+                        <tr>
+              <td class="text-center">18-07-2016</td>
+              <td class="text-center">Vente</td>
+              <td class="text-center">-1</td>
+            </tr>
+                        <tr>
+              <td class="text-center">22-07-2016</td>
+              <td class="text-center">Vente</td>
+              <td class="text-center">-1</td>
+            </tr>
+                        <tr>
+              <td class="text-center">23-07-2016</td>
+              <td class="text-center">Vente</td>
+              <td class="text-center">-1</td>
+            </tr>
+                        <tr>
+              <td class="text-center">23-07-2016</td>
+              <td class="text-center">Livraison</td>
+              <td class="text-center">3</td>
+            </tr>
+                        <tr>
+              <td class="text-center">30-07-2016</td>
+              <td class="text-center">Vente</td>
+              <td class="text-center">-1</td>
+            </tr>
+                        <tr>
+              <td class="text-center">30-07-2016</td>
+              <td class="text-center">Vente</td>
+              <td class="text-center">-2</td>
+            </tr>
+                        <tr>
+              <td class="text-center">30-07-2016</td>
+              <td class="text-center">Vente</td>
+              <td class="text-center">-1</td>
+            </tr>
+                        <tr>
+              <td class="text-center">17-08-2016</td>
+              <td class="text-center">Vente</td>
+              <td class="text-center">-1</td>
+            </tr>
+                        <tr>
+              <td class="text-center">20-08-2016</td>
+              <td class="text-center">Vente</td>
+              <td class="text-center">-8</td>
+            </tr>
+                      </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class=""row>
+      <div class="col-md-offset-2">
+        <h5>Détail Financier</h5>
+      </div>
+    </div>
+
+    <div class=""row>
+      <div class="col-md-offset-2">
+        <table class="table table-responsive table-condensed table-bordered table-hover">
+          <thead>
+            <tr>
+              <th class="text-center">Prix Unitaire</th>
+              <th class="text-center">Livré</th>
+              <th class="text-center">Vendu</th>
+              <th class="text-center">stock</th>
+              <th class="text-center">Total</th>
+              <th class="text-center">Marge (22%)</th>
+              <th class="text-center">Solde</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="text-center">6.00 €</td>
+              <td class="text-center">16</td>
+              <td class="text-center">17</td>
+              <td class="text-center">0</td>
+              <td class="text-center">102.00 €</td>
+              <td class="text-center">22.44 €</td>
+              <td class="text-center danger text-danger">79.56 €</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+      <div class=""row>
+      <h4><span class="col-md-2"><small>VIG-0275-13.00 €</small></span>ratafia rouge</h4>
+    </div>
+
+    <div class=""row>
+      <div class="col-md-offset-2">
+        <h5>Détail des variations de stock</h5>
+      </div>
+    </div>
+
+    <div class=""row>
+      <div class="col-md-offset-2">
+        <table class="table table-responsive table-striped table-condensed table-bordered table-hover">
+          <thead>
+            <tr>
+              <th class="text-center">Date</th>
+              <th class="text-center">Type</th>
+              <th class="text-center">Quantité</th>
+            </tr>
+          </thead>
+          <tbody>
+                        <tr>
+              <td class="text-center">06-07-2016</td>
+              <td class="text-center">Livraison</td>
+              <td class="text-center">6</td>
+            </tr>
+                        <tr>
+              <td class="text-center">06-08-2016</td>
+              <td class="text-center">Vente</td>
+              <td class="text-center">-1</td>
+            </tr>
+                        <tr>
+              <td class="text-center">16-08-2016</td>
+              <td class="text-center">Vente</td>
+              <td class="text-center">-1</td>
+            </tr>
+                      </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class=""row>
+      <div class="col-md-offset-2">
+        <h5>Détail Financier</h5>
+      </div>
+    </div>
+
+    <div class=""row>
+      <div class="col-md-offset-2">
+        <table class="table table-responsive table-condensed table-bordered table-hover">
+          <thead>
+            <tr>
+              <th class="text-center">Prix Unitaire</th>
+              <th class="text-center">Livré</th>
+              <th class="text-center">Vendu</th>
+              <th class="text-center">stock</th>
+              <th class="text-center">Total</th>
+              <th class="text-center">Marge (22%)</th>
+              <th class="text-center">Solde</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="text-center">13.00 €</td>
+              <td class="text-center">6</td>
+              <td class="text-center">2</td>
+              <td class="text-center">4</td>
+              <td class="text-center">26.00 €</td>
+              <td class="text-center">5.72 €</td>
+              <td class="text-center danger text-danger">20.28 €</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+      <div class=""row>
+      <h4><span class="col-md-2"><small>VIG-0276-5.00 €</small></span>cahors malbec</h4>
+    </div>
+
+    <div class=""row>
+      <div class="col-md-offset-2">
+        <h5>Détail des variations de stock</h5>
+      </div>
+    </div>
+
+    <div class=""row>
+      <div class="col-md-offset-2">
+        <table class="table table-responsive table-striped table-condensed table-bordered table-hover">
+          <thead>
+            <tr>
+              <th class="text-center">Date</th>
+              <th class="text-center">Type</th>
+              <th class="text-center">Quantité</th>
+            </tr>
+          </thead>
+          <tbody>
+                        <tr>
+              <td class="text-center">06-07-2016</td>
+              <td class="text-center">Livraison</td>
+              <td class="text-center">18</td>
+            </tr>
+                        <tr>
+              <td class="text-center">09-07-2016</td>
+              <td class="text-center">Vente</td>
+              <td class="text-center">-1</td>
+            </tr>
+                        <tr>
+              <td class="text-center">09-07-2016</td>
+              <td class="text-center">Vente</td>
+              <td class="text-center">-1</td>
+            </tr>
+                        <tr>
+              <td class="text-center">12-07-2016</td>
+              <td class="text-center">Vente</td>
+              <td class="text-center">-1</td>
+            </tr>
+                        <tr>
+              <td class="text-center">13-07-2016</td>
+              <td class="text-center">Vente</td>
+              <td class="text-center">-3</td>
+            </tr>
+                        <tr>
+              <td class="text-center">23-07-2016</td>
+              <td class="text-center">Vente</td>
+              <td class="text-center">-1</td>
+            </tr>
+                        <tr>
+              <td class="text-center">24-07-2016</td>
+              <td class="text-center">Vente</td>
+              <td class="text-center">-1</td>
+            </tr>
+                        <tr>
+              <td class="text-center">24-07-2016</td>
+              <td class="text-center">Vente</td>
+              <td class="text-center">-1</td>
+            </tr>
+                        <tr>
+              <td class="text-center">28-07-2016</td>
+              <td class="text-center">Vente</td>
+              <td class="text-center">-1</td>
+            </tr>
+                        <tr>
+              <td class="text-center">06-08-2016</td>
+              <td class="text-center">Vente</td>
+              <td class="text-center">-1</td>
+            </tr>
+                        <tr>
+              <td class="text-center">08-08-2016</td>
+              <td class="text-center">Vente</td>
+              <td class="text-center">-1</td>
+            </tr>
+                        <tr>
+              <td class="text-center">10-08-2016</td>
+              <td class="text-center">Vente</td>
+              <td class="text-center">-1</td>
+            </tr>
+                        <tr>
+              <td class="text-center">11-08-2016</td>
+              <td class="text-center">Vente</td>
+              <td class="text-center">-1</td>
+            </tr>
+                        <tr>
+              <td class="text-center">12-08-2016</td>
+              <td class="text-center">Vente</td>
+              <td class="text-center">-1</td>
+            </tr>
+                        <tr>
+              <td class="text-center">12-08-2016</td>
+              <td class="text-center">Vente</td>
+              <td class="text-center">-1</td>
+            </tr>
+                        <tr>
+              <td class="text-center">12-08-2016</td>
+              <td class="text-center">Vente</td>
+              <td class="text-center">-1</td>
+            </tr>
+                        <tr>
+              <td class="text-center">18-08-2016</td>
+              <td class="text-center">Livraison</td>
+              <td class="text-center">6</td>
+            </tr>
+                        <tr>
+              <td class="text-center">18-08-2016</td>
+              <td class="text-center">Vente</td>
+              <td class="text-center">-1</td>
+            </tr>
+                      </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class=""row>
+      <div class="col-md-offset-2">
+        <h5>Détail Financier</h5>
+      </div>
+    </div>
+
+    <div class=""row>
+      <div class="col-md-offset-2">
+        <table class="table table-responsive table-condensed table-bordered table-hover">
+          <thead>
+            <tr>
+              <th class="text-center">Prix Unitaire</th>
+              <th class="text-center">Livré</th>
+              <th class="text-center">Vendu</th>
+              <th class="text-center">stock</th>
+              <th class="text-center">Total</th>
+              <th class="text-center">Marge (22%)</th>
+              <th class="text-center">Solde</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="text-center">5.00 €</td>
+              <td class="text-center">24</td>
+              <td class="text-center">18</td>
+              <td class="text-center">6</td>
+              <td class="text-center">90.00 €</td>
+              <td class="text-center">19.80 €</td>
+              <td class="text-center danger text-danger">70.20 €</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+      <div class=""row>
+      <h4><span class="col-md-2"><small>VIG-0277-6.00 €</small></span>betty 2011</h4>
+    </div>
+
+    <div class=""row>
+      <div class="col-md-offset-2">
+        <h5>Détail des variations de stock</h5>
+      </div>
+    </div>
+
+    <div class=""row>
+      <div class="col-md-offset-2">
+        <table class="table table-responsive table-striped table-condensed table-bordered table-hover">
+          <thead>
+            <tr>
+              <th class="text-center">Date</th>
+              <th class="text-center">Type</th>
+              <th class="text-center">Quantité</th>
+            </tr>
+          </thead>
+          <tbody>
+                        <tr>
+              <td class="text-center">06-07-2016</td>
+              <td class="text-center">Livraison</td>
+              <td class="text-center">18</td>
+            </tr>
+                        <tr>
+              <td class="text-center">16-07-2016</td>
+              <td class="text-center">Vente</td>
+              <td class="text-center">-1</td>
+            </tr>
+                        <tr>
+              <td class="text-center">23-07-2016</td>
+              <td class="text-center">Vente</td>
+              <td class="text-center">-1</td>
+            </tr>
+                        <tr>
+              <td class="text-center">24-07-2016</td>
+              <td class="text-center">Vente</td>
+              <td class="text-center">-1</td>
+            </tr>
+                        <tr>
+              <td class="text-center">02-08-2016</td>
+              <td class="text-center">Vente</td>
+              <td class="text-center">-1</td>
+            </tr>
+                        <tr>
+              <td class="text-center">10-08-2016</td>
+              <td class="text-center">Vente</td>
+              <td class="text-center">-1</td>
+            </tr>
+                        <tr>
+              <td class="text-center">11-08-2016</td>
+              <td class="text-center">Vente</td>
+              <td class="text-center">-1</td>
+            </tr>
+                        <tr>
+              <td class="text-center">12-08-2016</td>
+              <td class="text-center">Vente</td>
+              <td class="text-center">-2</td>
+            </tr>
+                        <tr>
+              <td class="text-center">18-08-2016</td>
+              <td class="text-center">Vente</td>
+              <td class="text-center">-1</td>
+            </tr>
+                        <tr>
+              <td class="text-center">19-08-2016</td>
+              <td class="text-center">Vente</td>
+              <td class="text-center">-1</td>
+            </tr>
+                        <tr>
+              <td class="text-center">20-08-2016</td>
+              <td class="text-center">Vente</td>
+              <td class="text-center">-2</td>
+            </tr>
+                      </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class=""row>
+      <div class="col-md-offset-2">
+        <h5>Détail Financier</h5>
+      </div>
+    </div>
+
+    <div class=""row>
+      <div class="col-md-offset-2">
+        <table class="table table-responsive table-condensed table-bordered table-hover">
+          <thead>
+            <tr>
+              <th class="text-center">Prix Unitaire</th>
+              <th class="text-center">Livré</th>
+              <th class="text-center">Vendu</th>
+              <th class="text-center">stock</th>
+              <th class="text-center">Total</th>
+              <th class="text-center">Marge (22%)</th>
+              <th class="text-center">Solde</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="text-center">6.00 €</td>
+              <td class="text-center">18</td>
+              <td class="text-center">12</td>
+              <td class="text-center">6</td>
+              <td class="text-center">72.00 €</td>
+              <td class="text-center">15.84 €</td>
+              <td class="text-center danger text-danger">56.16 €</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+      <div class=""row>
+      <h4><span class="col-md-2"><small>VIG-0278-9.00 €</small></span>betty 2006</h4>
+    </div>
+
+    <div class=""row>
+      <div class="col-md-offset-2">
+        <h5>Détail des variations de stock</h5>
+      </div>
+    </div>
+
+    <div class=""row>
+      <div class="col-md-offset-2">
+        <table class="table table-responsive table-striped table-condensed table-bordered table-hover">
+          <thead>
+            <tr>
+              <th class="text-center">Date</th>
+              <th class="text-center">Type</th>
+              <th class="text-center">Quantité</th>
+            </tr>
+          </thead>
+          <tbody>
+                        <tr>
+              <td class="text-center">06-07-2016</td>
+              <td class="text-center">Livraison</td>
+              <td class="text-center">12</td>
+            </tr>
+                        <tr>
+              <td class="text-center">24-07-2016</td>
+              <td class="text-center">Vente</td>
+              <td class="text-center">-1</td>
+            </tr>
+                        <tr>
+              <td class="text-center">09-08-2016</td>
+              <td class="text-center">Vente</td>
+              <td class="text-center">-1</td>
+            </tr>
+                        <tr>
+              <td class="text-center">19-08-2016</td>
+              <td class="text-center">Vente</td>
+              <td class="text-center">-1</td>
+            </tr>
+                        <tr>
+              <td class="text-center">20-08-2016</td>
+              <td class="text-center">Vente</td>
+              <td class="text-center">-1</td>
+            </tr>
+                      </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class=""row>
+      <div class="col-md-offset-2">
+        <h5>Détail Financier</h5>
+      </div>
+    </div>
+
+    <div class=""row>
+      <div class="col-md-offset-2">
+        <table class="table table-responsive table-condensed table-bordered table-hover">
+          <thead>
+            <tr>
+              <th class="text-center">Prix Unitaire</th>
+              <th class="text-center">Livré</th>
+              <th class="text-center">Vendu</th>
+              <th class="text-center">stock</th>
+              <th class="text-center">Total</th>
+              <th class="text-center">Marge (22%)</th>
+              <th class="text-center">Solde</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="text-center">9.00 €</td>
+              <td class="text-center">12</td>
+              <td class="text-center">4</td>
+              <td class="text-center">8</td>
+              <td class="text-center">36.00 €</td>
+              <td class="text-center">7.92 €</td>
+              <td class="text-center danger text-danger">28.08 €</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+      <div class=""row>
+      <h4><span class="col-md-2"><small>VIG-0279-4.00 €</small></span>jus de raisin</h4>
+    </div>
+
+    <div class=""row>
+      <div class="col-md-offset-2">
+        <h5>Détail des variations de stock</h5>
+      </div>
+    </div>
+
+    <div class=""row>
+      <div class="col-md-offset-2">
+        <table class="table table-responsive table-striped table-condensed table-bordered table-hover">
+          <thead>
+            <tr>
+              <th class="text-center">Date</th>
+              <th class="text-center">Type</th>
+              <th class="text-center">Quantité</th>
+            </tr>
+          </thead>
+          <tbody>
+                        <tr>
+              <td class="text-center">06-07-2016</td>
+              <td class="text-center">Livraison</td>
+              <td class="text-center">18</td>
+            </tr>
+                        <tr>
+              <td class="text-center">11-07-2016</td>
+              <td class="text-center">Vente</td>
+              <td class="text-center">-1</td>
+            </tr>
+                        <tr>
+              <td class="text-center">13-07-2016</td>
+              <td class="text-center">Vente</td>
+              <td class="text-center">-1</td>
+            </tr>
+                        <tr>
+              <td class="text-center">02-08-2016</td>
+              <td class="text-center">Vente</td>
+              <td class="text-center">-1</td>
+            </tr>
+                      </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class=""row>
+      <div class="col-md-offset-2">
+        <h5>Détail Financier</h5>
+      </div>
+    </div>
+
+    <div class=""row>
+      <div class="col-md-offset-2">
+        <table class="table table-responsive table-condensed table-bordered table-hover">
+          <thead>
+            <tr>
+              <th class="text-center">Prix Unitaire</th>
+              <th class="text-center">Livré</th>
+              <th class="text-center">Vendu</th>
+              <th class="text-center">stock</th>
+              <th class="text-center">Total</th>
+              <th class="text-center">Marge (22%)</th>
+              <th class="text-center">Solde</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="text-center">4.00 €</td>
+              <td class="text-center">18</td>
+              <td class="text-center">3</td>
+              <td class="text-center">15</td>
+              <td class="text-center">12.00 €</td>
+              <td class="text-center">2.64 €</td>
+              <td class="text-center danger text-danger">9.36 €</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+      <div class=""row>
+      <h4><span class="col-md-2"><small>VIG-0401-5.00 €</small></span>rosé sec et moelleux</h4>
+    </div>
+
+    <div class=""row>
+      <div class="col-md-offset-2">
+        <h5>Détail des variations de stock</h5>
+      </div>
+    </div>
+
+    <div class=""row>
+      <div class="col-md-offset-2">
+        <table class="table table-responsive table-striped table-condensed table-bordered table-hover">
+          <thead>
+            <tr>
+              <th class="text-center">Date</th>
+              <th class="text-center">Type</th>
+              <th class="text-center">Quantité</th>
+            </tr>
+          </thead>
+          <tbody>
+                        <tr>
+              <td class="text-center">09-07-2016</td>
+              <td class="text-center">Livraison</td>
+              <td class="text-center">24</td>
+            </tr>
+                        <tr>
+              <td class="text-center">18-07-2016</td>
+              <td class="text-center">Vente</td>
+              <td class="text-center">-2</td>
+            </tr>
+                        <tr>
+              <td class="text-center">23-07-2016</td>
+              <td class="text-center">Vente</td>
+              <td class="text-center">-1</td>
+            </tr>
+                        <tr>
+              <td class="text-center">24-07-2016</td>
+              <td class="text-center">Vente</td>
+              <td class="text-center">-1</td>
+            </tr>
+                        <tr>
+              <td class="text-center">27-07-2016</td>
+              <td class="text-center">Livraison</td>
+              <td class="text-center">6</td>
+            </tr>
+                        <tr>
+              <td class="text-center">28-07-2016</td>
+              <td class="text-center">Vente</td>
+              <td class="text-center">-1</td>
+            </tr>
+                        <tr>
+              <td class="text-center">28-07-2016</td>
+              <td class="text-center">Vente</td>
+              <td class="text-center">-1</td>
+            </tr>
+                        <tr>
+              <td class="text-center">30-07-2016</td>
+              <td class="text-center">Vente</td>
+              <td class="text-center">-1</td>
+            </tr>
+                        <tr>
+              <td class="text-center">06-08-2016</td>
+              <td class="text-center">Vente</td>
+              <td class="text-center">-1</td>
+            </tr>
+                        <tr>
+              <td class="text-center">09-08-2016</td>
+              <td class="text-center">Vente</td>
+              <td class="text-center">-1</td>
+            </tr>
+                        <tr>
+              <td class="text-center">10-08-2016</td>
+              <td class="text-center">Vente</td>
+              <td class="text-center">-1</td>
+            </tr>
+                        <tr>
+              <td class="text-center">10-08-2016</td>
+              <td class="text-center">Vente</td>
+              <td class="text-center">-1</td>
+            </tr>
+                        <tr>
+              <td class="text-center">16-08-2016</td>
+              <td class="text-center">Vente</td>
+              <td class="text-center">-1</td>
+            </tr>
+                        <tr>
+              <td class="text-center">20-08-2016</td>
+              <td class="text-center">Vente</td>
+              <td class="text-center">-1</td>
+            </tr>
+                      </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class=""row>
+      <div class="col-md-offset-2">
+        <h5>Détail Financier</h5>
+      </div>
+    </div>
+
+    <div class=""row>
+      <div class="col-md-offset-2">
+        <table class="table table-responsive table-condensed table-bordered table-hover">
+          <thead>
+            <tr>
+              <th class="text-center">Prix Unitaire</th>
+              <th class="text-center">Livré</th>
+              <th class="text-center">Vendu</th>
+              <th class="text-center">stock</th>
+              <th class="text-center">Total</th>
+              <th class="text-center">Marge (22%)</th>
+              <th class="text-center">Solde</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="text-center">5.00 €</td>
+              <td class="text-center">30</td>
+              <td class="text-center">13</td>
+              <td class="text-center">17</td>
+              <td class="text-center">65.00 €</td>
+              <td class="text-center">14.30 €</td>
+              <td class="text-center danger text-danger">50.70 €</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+      console.log('Script');
+      var fournisseurId = $('#fournisseurId').attr('data');
+      window.open(Routing.generate('fournisseur_letter', {id: fournisseurId}), '_blank');
+    });
+  </script>
+
+
+      <div class="credits">
+        <p>
+          proGest est un applicatif Web développé par géoGraph
+        </p>
+        <p>
+          9, rue de la Mairie | 82110 LAUZERTE - <a href="mailto:contact@geograph.fr">contact@geograph.fr</a> - <a href="http://geograph.fr">http://geograph.fr</a>
+        </p>
+      </div>
+    </div>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function(){
+        $('#btnPrint').on('click', function(e){
+          event.preventDefault();
+          window.print();
+        });
+      });
+    </script>
+  </body>
+</html>

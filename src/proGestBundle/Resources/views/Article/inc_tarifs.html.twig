@@ -1,0 +1,53 @@
+{# Affichage du contenu de l'onglet tarifs #}
+
+<div class="onglet">
+  <div class="row">
+    <div class="col-sm-offset-1 col-sm-4">
+      <table class="table table-bordered table-condensed">
+        <thead>
+          <tr>
+            <th class="text-center">de</th>
+            <th class="text-center">à</th>
+            <th class="text-center">Prix de vente</th>
+            <th class="text-center">Actions</th>
+          </tr>
+        </thead>
+        <tbody id="tarifs-body">
+          {% for prix in tableautarif %}
+            {% if loop.first %}
+            <tr id="first-line">
+              <td id="de_{{ prix.id }}" class="text-center">{{ prix.de }}</td>
+              <td id="a_{{ prix.id }}" class="text-center">{{ prix.a }}</td>
+              <td id="prix_{{ prix.id }}" class="text-center">{{ prix.prix }} €</td>
+              <td id="actions_{{ prix.id }}" class="text-center"></td>
+            </tr>
+            {% else %}
+            <tr id="line_{{ prix.id }}">
+
+              <td id="de_{{ prix.id }}" class="text-center">{{ prix.de }}</td>
+              <td id="a_{{ prix.id }}" class="text-center">{{ prix.a }}</td>
+              <td id="prix_{{ prix.id }}" class="text-center">{{ prix.prix }} €</td>
+              <td id="actions_{{ prix.id }}" class="text-center">
+                <div class="btn-group btn-group-xs">
+                  <button  id="btnPrixMultipleDel_{{ prix.id }}" type="button" name="button" class="btn btn-danger">
+                    <span class="fa fa-trash-o"></span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+            {% endif %}
+          {% endfor %}
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="4" class="text-right">
+              <button id="btnPrixMultipleAdd" type="button" name="button" class="btn btn-success btn-sm">
+                <span class="fa fa-plus"></span>
+              </button>
+            </td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+  </div>
+</div>

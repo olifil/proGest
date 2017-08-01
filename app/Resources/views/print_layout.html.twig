@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ boutique.nom }} - {% block title %}Initialisation{% endblock %}</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{{ asset('bundles/progest/css/print.css')}}" media="all"/>
+
+    <script type="text/javascript" src="{{ asset('bundles/progest/js/jquery.js') }}"></script>
+    <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+    <script src="{{ path('fos_js_routing_js', {'callback': 'fos.Router.setData'}) }}"></script>
+
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="container">
+      <div class="jumbotron">
+        <h1>Boutique {{ boutique.nom}}</h1>
+        <p class="col-md-offset-1">
+          {{ boutique.adresse }}<br />
+          {{ boutique.codepostal }} {{ boutique.ville }}
+        </p>
+        {% if boutique.telephone or boutique.email %}
+        <p class="col-md-offset-1">
+          {{ boutique.telephone }}  {{ boutique.email }}
+        </p>
+        {% endif %}
+
+        <p id="imprimer" class="col-md-offset-1">
+          <a id="btnPrint" class="btn btn-primary btn-lg" href="#" role="button" title="Imprimer la page">
+            <span class="fa fa-print fa-fw"></span> Imprimer
+          </a>
+        </p>
+
+        {% block toolbar %}{% endblock %}
+      </div>
+
+      {% block body %}
+
+      {% endblock %}
+
+      <div class="credits">
+        <p>
+          proGest est un applicatif Web développé par géoGraph
+        </p>
+        <p>
+          9, rue de la Mairie | 82110 LAUZERTE - <a href="mailto:contact@geograph.fr">contact@geograph.fr</a> - <a href="http://geograph.fr">http://geograph.fr</a>
+        </p>
+      </div>
+    </div>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function(){
+        $('#btnPrint').on('click', function(e){
+          event.preventDefault();
+          window.print();
+        });
+      });
+    </script>
+  </body>
+</html>

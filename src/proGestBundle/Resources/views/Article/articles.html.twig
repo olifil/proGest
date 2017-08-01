@@ -1,0 +1,79 @@
+{# /src/Geograph/CodetBundle/Resources/views/Fournisseur/fournisseurs.html.twig #}
+
+{% extends "::layout.html.twig" %}
+
+{% block javascripts %}
+  {{ parent() }}
+  <script type="text/javascript" src="{{ asset('bundles/progest/js/ckeditor.js') }}"></script>
+{% endblock %}
+
+{% block title %}{{ parent() }} - Liste des articles{% endblock %}
+
+{% block titre %}Liste des articles{% endblock %}
+
+{% block fil_ariane %}
+    {{ parent() }}
+    <li class="active">Articles</li>
+{% endblock %}
+
+{% block toolbar %}
+    <li>
+      <button id="btnAddArticle" type="button" class="btn btn-default" title="Ajouter un article">
+        <span class="fa fa-plus fa-fw"></span>
+      </button>
+    </li>
+    {% if articles|length > 0 %}
+    <li>
+      <div class="btn-group-vertical">
+        <button id="btnArticlesPrintTags" type="button" class="btn btn-default" title="Imprimer toutes les étiquettes">
+          <span class="fa fa-tags fa-fw"></span>
+        </button>
+        <button id="btnPrintArticlesList" type="button" class="btn btn-default" title="Imprimer la liste des articles">
+          <span class="fa fa-print fa-fw"></span>
+        </button>
+      </div>
+    </li>
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+  <article class="col-md-offset-1">
+
+    {% if articles|length > 0 %}
+    {% for article in articles %}
+    <div class="col-sm-2">
+      <div class="widget widget-border icon icon-article">
+        <h4>
+          <a href="{{ path('article-view', {'id': article.id }) }}" title="Accéder aux produits">{{ article.nom }}</a>
+          <span class="badge" title="{% if article.stock > 0 %}{{ article.stock }}{% else %}0{% endif %} article(s) pour ce fournisseur">
+            {% if article.stock > 0 %}
+              {{ article.stock }}
+            {% else %}
+              0
+            {% endif %}
+          </span>
+        </h4>
+        <p class="text-center">
+          <a href="{{ path('fournisseur-view', {'id': article.fournisseur.id }) }}" title="Accéder aux produits">
+            {{ article.fournisseur.prenom }} {{ article.fournisseur.nom }}
+          </a>
+        </p>
+      </div>
+
+    </div>
+    {% endfor %}
+
+    {% else %}
+    <p>Il n'y a pour l'instant aucun article dans votre boutique.</p>
+    {% endif %}
+
+  </article>
+
+  {# Fenêtre modale #}
+  {% include('proGestBundle:inc:modal.html.twig') %}
+
+  {% include('proGestBundle:inc:modal.html.twig') %}
+
+  {% include('proGestBundle:inc:modalTags.html.twig') %}
+
+{% endblock %}

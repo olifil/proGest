@@ -1,0 +1,178 @@
+{% extends '::layout.html.twig' %}
+
+{% block javascripts %}
+  {{ parent() }}
+  <script type="text/javascript" src="{{ asset('bundles/progest/js/underscore.min.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('bundles/progest/js/backbone.min.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('bundles/progest/js/backbone.localStorage-min.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('bundles/progest/js/jquery-ui.min.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('bundles/progest/js/typeahead.bundle.js')}}"></script>
+{% endblock %}
+
+{% block titre %}
+  Créer une vente
+{% endblock %}
+
+{% block toolbar %}
+  {{ parent() }}
+  <li>
+    <button id="btnWait" type="button" name="button" class="btn btn-default" title="Client en attente">
+      <span class="fa fa-cart-plus fa-fw"></span>
+    </button>
+  </li>
+{% endblock %}
+
+{% block fil_ariane %}
+    {{ parent() }}
+    <li><a href="{{ path('ventes') }}">Ventes</a></li>
+    <li class="active">Enregistrer les ventes</li>
+{% endblock %}
+
+{% block content %}
+  <span id="now" data="{{ now }}"></span>
+  {% if boutique != null  and boutique.isActive == true %}
+  <div id="vente-content" class="row">
+    <div class="col-md-offset-1 col-md-10">
+
+        {% include('proGestBundle:Vente:inc_venteBaseForm.html.twig') %}
+            <div class="col-md-offset-1">
+                <div class="btn-group">
+                    <button id="btnVenteSave" type="button" name="Save" class="btn btn-success" disabled>
+                      <span id="btnVenteSave-icon" class="fa fa-save"></span> Enregistrer
+                    </button>
+                    <button id="btnVenteUndo" type="button" class="btn btn-danger">
+                      <span class="fa fa-times"></span> Annuler
+                    </button>
+                </div>
+            </div>
+
+    </div>
+
+  </div>
+
+  {% else %}
+    Vous n'avez pas l'autorisation d'accéder à cette page.
+  {% endif %}
+
+  {% include('proGestBundle:inc:modal.html.twig') %}
+
+  <script>
+
+    $("input[data-id=reference]").autocomplete({
+      source: function (request, response)
+      {
+          $('#reference').addClass('loader loader-right');
+          var objData = {};
+          var url = $(this.element).attr('data-url');
+          objData = {
+            reference: request.term,
+            alreadyAddedProduct: productsList.toJSON(),
+          };
+          $.ajax({
+            url: url,
+            dataType: "json",
+            data : objData,
+            type: 'POST',
+            success: function (data)
+            {
+                response($.map(data, function (item)
+                {
+                    return {
+                      label: item.reference + ", " + item.nom,
+                      product: item,
+                      value: function ()
+                      {
+                        searchProduct = item;
+                        return item.reference;
+                      }
+                    };
+                }));
+                $('#reference').removeClass('loader loader-right');
+            },
+            error: function (jqXHR, textStatus, errorThrown)
+            {
+              console.log(textStatus, errorThrown);
+            }
+          });
+      },
+      select: function(event, ui) {
+        // On crée un objet Vente
+        var item = ui.item.product;
+        product = new VenteApp.ProductModel({
+          id: item.id,
+          reference: item.reference,
+          nom: item.nom,
+          stockInitial: parseInt(item.stock),
+          stock: parseInt(item.stock) - 1,
+          quantite: 1,
+          prixAchat: parseFloat(item.prixAchat),
+          prixUnitaire: parseFloat(item.prixAchat),
+          prixMultiple: item.prixMultiple,
+          montantTotal: parseFloat(item.prixAchat)
+        });
+        product.render();
+      },
+      minLength: 3,
+      delay: 300,
+      appendTo: $("form:first")
+    });
+
+    $('input[data-id=reference]').data('ui-autocomplete')._renderMenu = function( ul, items ) {
+      var that = this;
+      ul.attr("class", "nav nav-pills nav-stacked");
+      $.each( items, function( index, item ) {
+        that._renderItemData( ul, item );
+      });
+    };
+
+    // $(window).bind("beforeunload", function() {
+    //     return "Vous allez perdre toutes les informations contenues dans cette page.";
+    // })
+  </script>
+
+{% endblock %}
+
+{% block footerJavascripts %}
+  <script type="text/template" id="view_product">
+    <td>
+      <input type="text" name="reference" value="<%= reference %>" disabled="" class="form-control">
+    </td>
+    <td>
+      <input type="text" name="nom" value="<%= nom %>" disabled="" class="form-control">
+    </td>
+    <td class="text-center">
+      <div class="input-group">
+        <input id="singleProduct-quantite" type="number" name="quantite" value="<%= quantite %>" min="1" max="<%= stockInitial %>" disabled="" class="form-control">
+        <span class="input-group-addon" id="basic-addon2">U</span>
+      </div>
+    </td>
+    <td class="text-right">
+      <div class="input-group">
+        <input id="singleProduct-prixUnitaire" type="text" name="prixUnitaire" value="<%= prixUnitaire %>" disabled="" class="form-control">
+        <span class="input-group-addon" id="basic-addon2">€</span>
+      </div>
+    </td>
+    <td class="text-right">
+      <div class="input-group">
+        <input id="singleProduct-montantTotal" type="text" name="name" value="<%= montantTotal %>" disabled="" class="form-control">
+        <span class="input-group-addon" id="basic-addon2">€</span>
+      </div>
+    </td>
+    <td class="text-center">
+      <div class="btn-group btn-group-sm">
+        <button id="editProduct" type="button" class="btn btn-default" title="Editer cet article" disabled>
+          <span class=" text-primary fa fa-edit"></span>
+        </button>
+        <button id="removeProduct" type="button" class="btn btn-default" title="Supprimer cet article">
+          <span class=" text-danger fa fa-trash-o"></span>
+        </button>
+      </div>
+    </td>
+  </script>
+  <script type="text/javascript" src="{{ asset('bundles/progest/js/applications/ventes/models/vente.Model.js')}}"></script>
+  <script type="text/javascript" src="{{ asset('bundles/progest/js/applications/ventes/models/product.Model.js')}}"></script>
+  <script type="text/javascript" src="{{ asset('bundles/progest/js/applications/ventes/collections/products.Collection.js')}}"></script>
+  <script type="text/javascript" src="{{ asset('bundles/progest/js/applications/ventes/views/product.View.js')}}"></script>
+  <script type="text/javascript" src="{{ asset('bundles/progest/js/applications/ventes/views/vente.View.js')}}"></script>
+  <script type="text/javascript" src="{{ asset('bundles/progest/js/applications/ventes/vente.App.js')}}"></script>
+{% endblock %}

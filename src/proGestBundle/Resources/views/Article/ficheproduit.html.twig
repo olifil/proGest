@@ -1,0 +1,4 @@
+<h3>{{ article.nom }}</h3>
+<a href="{{ path('fournisseur-view', {'id': article.fournisseur.id }) }}">{{ article.fournisseur.nom }}</a>
+{{ article.descriptif|raw }}
+<p>Prix de vente : {{ article.prixAchat }} €</p>

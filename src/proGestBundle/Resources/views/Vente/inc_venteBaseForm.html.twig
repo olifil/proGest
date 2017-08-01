@@ -1,0 +1,124 @@
+{# Formulaire d'ajout de produits #}
+<div class="row">
+    <div class="col-md-12">
+
+      <h2>Rechercher un produit</h2>
+      <table class="table table-hover table-striped table-bordered table-condensed">
+        <thead>
+          <tr>
+            <th class="text-center">Référence</th>
+            <th class="text-center">Désignation</th>
+            <th class="text-center">Stock</th>
+            <th class="text-center  t-15">Quantité</th>
+            <th class="text-center t-15">Prix Unitaire</th>
+            <th class="text-center t-15">Montant Total</th>
+            <th class="t-10"></th>
+          </tr>
+        </thead>
+        <tbody id="recherche">
+            <tr id="insertForm">
+                {# REFERENCE DU PRODUIT #}
+                <td class="t-15">
+                  <input id="reference" type="text" name="name" value="" placeholder="Saisissez la référence" class="form-control" data-id="reference" data-url="{{ path('article_ref_autocomplete') }}">
+                </td>
+                {# NOM DU PRODUIT #}
+                <td class="t-30">
+                  <input id="nom" type="text" name="name" value="" disabled="" class="form-control">
+                </td>
+                {# STOCK DU PRODUIT #}
+                <td class="t-10">
+                  <input id="stock" type="text" name="name" value="" disabled="" class="form-control text-center">
+                </td>
+                {# QUANTITE DU PRODUIT #}
+                <td class="text-center">
+                  <div class="input-group">
+                    <input id="quantite" type="number" name="name" value="1" min="1" class="form-control text-center" disabled="">
+                    <span class="input-group-addon" id="basic-addon2">U</span>
+                  </div>
+                </td>
+                {# PRIX DU PRODUIT #}
+                <td class="text-right">
+                  <div class="input-group">
+                    <input id="prixAchat" type="text" name="name" value="" disabled="" class="form-control text-right">
+                    <span class="input-group-addon" id="basic-addon2">€</span>
+                  </div>
+                </td>
+                {# TOTAL DU PRODUIT #}
+                <td class="text-right">
+                  <div class="input-group">
+                    <input id="montantTotal" type="text" name="name" value="" disabled="" class="form-control text-right">
+                    <span class="input-group-addon" id="basic-addon2">€</span>
+                  </div>
+                </td>
+                {# ACTIONS DU PRODUIT #}
+                <td class="text-center">
+                  <div class="btn-group btn-group-sm">
+                    <button id="btnProductAdd" type="button" name="button" class="btn btn-success btn-sm" title="Ajouter cet article" disabled>
+                      <span class="fa fa-cart-arrow-down"></span>
+                    </button>
+                  </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+      <h2>Détail de la vente</h2>
+      <table class="table table-hover table-striped table-bordered table-condensed">
+        <thead>
+          <tr>
+            <th class="text-center t-15">Référence</th>
+            <th class="text-center t-30">Désignation</th>
+            <th class="text-center t-15">Quantité</th>
+            <th class="text-center t-15">Prix Unitaire</th>
+            <th class="text-center t-15">Montant Total</th>
+            <th class="t-10"></th>
+          </tr>
+        </thead>
+        <tbody id="detail">
+
+        </tbody>
+    </table>
+    <div class="row">
+        <div class="col-md-9 text-right"><strong>Total</strong></div>
+        <div id="total" class="text-right col-md-2">
+          <div class="input-group">
+            <input id="totalFacture" type="text" name="name" value="0" disabled="" class="form-control text-right">
+            <span class="input-group-btn">
+              <button id="btnRecalculTotal" class="btn btn-default" type="button" title="Forcer le calcul du montant total">€</button>
+            </span>
+          </div>
+      </div>
+    </div>
+    <div class="row">
+        <div class="col-md-9 text-right"><strong>Mode de paiement</strong></div>
+        <div id="total" class="text-right col-md-2">
+            <select id="paymentMode" class="form-control">
+                <option value="numeraire">Numéraire</option>
+                <option value="carte">Carte banquaire</option>
+                <option value="cheque">Chèque</option>
+                <option value="adherent">Adhérent</option>
+            </select>
+      </div>
+    </div>
+
+    <div class=" masque row">
+        <div class="col-md-9 text-right"><strong>Donné</strong></div>
+        <div id="total" class="text-right col-md-2">
+            <div class="input-group">
+              <input id="encaisse" type="text" class="form-control text-right" placeholder="0.00">
+              <span class="input-group-addon" id="basic-addon2">€</span>
+            </div>
+      </div>
+    </div>
+
+    <div class="masque row">
+        <div class="col-md-9 text-right"><strong>A rendre</strong></div>
+        <div id="total" class="text-right col-md-2">
+            <div class="input-group">
+              <input id="monnaie" type="text" name="name" value="0" disabled="" class="form-control text-right">
+              <span class="input-group-addon" id="basic-addon2">€</span>
+            </div>
+      </div>
+    </div>
+    </div>
+</div>
