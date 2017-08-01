@@ -18,7 +18,7 @@ var VenteApp = VenteApp || {};
       $('#nom').val(this.get('nom'));
       $('#stock').val(this.get('stock'));
       $('#quantite')
-        .attr('max', this.get('stock'))
+        .attr('max', this.get('stock') + 1)
         .val(1)
         .removeAttr('disabled');
       $('#prixAchat').val(this.get('prixUnitaire').toFixed(2));
