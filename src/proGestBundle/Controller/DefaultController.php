@@ -305,6 +305,7 @@ class DefaultController extends Controller
       ));
     }
 
+    // Correctif du 2 août 2017
     public function correctifAction(Request $request)
     {
       $em = $this -> get('doctrine.orm.entity_manager');
