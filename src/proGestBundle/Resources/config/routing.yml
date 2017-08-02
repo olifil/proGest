@@ -82,3 +82,7 @@ credits:
 backup:
     path:     /backup
     defaults: { _controller: proGestBundle:Default:bddBackup }
+
+correctif:
+    path:     /correctif
+    defaults: { _controller: proGestBundle:Default:correctif }
