@@ -209,13 +209,18 @@ class FournisseurController extends Controller
         $variations = $em -> getRepository('proGestBundle:Variation') -> findByArticle($value);
         // exporter le detail au format csv
         foreach ($variations as $keyVariation => $variation) {
+          if ( $variation -> getVente() ) {
+            $vente = $variation -> getVente() -> getId();
+          } else {
+            $vente = "Livraison";
+          }
           // chaque ligne en cours de lecture est insérée dans le fichier
         	// les valeurs présentes dans chaque ligne seront séparées par $delimiteur
           $ligne = array(
             $value -> getId(),
             $value -> getNom(),
             $variation -> getId(),
-            $variation -> getVente(),
+            $vente,
             $variation -> getDate() -> format('Y m d'),
             $variation -> getQuantite(),
             $variation -> getPrixVente()
