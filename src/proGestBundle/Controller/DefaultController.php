@@ -306,7 +306,7 @@ class DefaultController extends Controller
     }
 
     // Correctif du 2 août 2017
-    public function correctifAction(Request $request)
+    public function correctifAAAAction(Request $request)
     {
       $em = $this -> get('doctrine.orm.entity_manager');
       $repository = $em -> getRepository('proGestBundle:Article');
@@ -326,6 +326,36 @@ class DefaultController extends Controller
               $variation -> setQuantite($variation -> getQuantite() * (-1));
               $quantiteVendue += $variation -> getQuantite();
               $em -> persist($variation);
+            }
+          }
+          $article -> setVendu($quantiteVendue * -1);
+          $em -> persist($article);
+        }
+      }
+
+      $em -> flush();
+
+      $response = new Response($msg);
+      return $response;
+    }
+    public function correctifAction(Request $request)
+    {
+      $em = $this -> get('doctrine.orm.entity_manager');
+      $repository = $em -> getRepository('proGestBundle:Article');
+
+      $msg = "Le correctif a été appliqué.";
+
+      // Traitement des articles
+      $articles = $repository -> findAll();
+      foreach ($articles as $key => $article) {
+        // Traitement des variations
+        $variations = $article -> getVariations();
+        if ( count($variations) != 0 ) {
+          $quantiteVendue = 0;
+          foreach ($variations as $key => $variation) {
+            if ( $variation -> getPrixVente() ) {
+              // La quantité est rendu négative
+              $quantiteVendue += $variation -> getQuantite();
             }
           }
           $article -> setVendu($quantiteVendue * -1);
