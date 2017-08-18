@@ -177,13 +177,13 @@ class FournisseurController extends Controller
       ));
 
     // Sauvegarder la vue dans un fichier
-      $file = $_SERVER['DOCUMENT_ROOT']. "/Etats/Soldes/" . $fournisseur -> getNom() . ".html";
+      $file = $_SERVER['DOCUMENT_ROOT']. "/Etats/Soldes/" . str_replace(' ','_', $fournisseur -> getNom() ) . ".html";
       $fp = fopen($file, 'w');
       fwrite($fp, $vue);
       fclose($fp);
 
     // Sauvegarder la lettre dans un fichier
-      $file = $_SERVER['DOCUMENT_ROOT']. "/Etats/Soldes/" . $fournisseur -> getNom() . "-courrier.html";
+      $file = $_SERVER['DOCUMENT_ROOT']. "/Etats/Soldes/" . str_replace(' ','_', $fournisseur -> getNom() ) . "-courrier.html";
       $fp = fopen($file, 'w');
       fwrite($fp, $lettre);
       fclose($fp);
@@ -193,7 +193,7 @@ class FournisseurController extends Controller
       $articlesSold = $articles;
 
       // Pour chaque article
-      $chemin = $_SERVER['DOCUMENT_ROOT']. "/Etats/Soldes/" . $fournisseur -> getNom() . "-solde.csv";
+      $chemin = $_SERVER['DOCUMENT_ROOT']. "/Etats/Soldes/" . str_replace(' ','_', $fournisseur -> getNom() ) . "-solde.csv";
       // Délimiteur dans le fichier
       $delimiteur = ";";
 

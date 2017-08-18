@@ -41,19 +41,19 @@
     $('#btnSolde').on('click', function(e){
       event.preventDefault();
       console.log($(this).attr('id'));
-      window.open("{{ asset('Etats/Soldes/') ~ fournisseur.nom ~ '.html'}}", "_blank")
+      window.open("{{ asset('Etats/Soldes/') ~ fournisseur.nom | replace({ ' ': '_' }) ~ '.html'}}", "_blank")
     });
 
     $('#btnLettre').on('click', function(e){
       event.preventDefault();
       console.log($(this).attr('id'));
-      window.open("{{ asset('Etats/Soldes/') ~ fournisseur.nom ~ "-courrier" ~ '.html'}}", "_blank")
+      window.open("{{ asset('Etats/Soldes/') ~ fournisseur.nom | replace({ ' ': '_' }) ~ "-courrier" ~ '.html'}}", "_blank")
     });
 
     $('#btnCSV').on('click', function(e){
       event.preventDefault();
       console.log($(this).attr('id'));
-      window.open("{{ asset('Etats/Soldes/') ~ fournisseur.nom ~ "-solde" ~ '.csv'}}", "_blank")
+      window.open("{{ asset('Etats/Soldes/') ~ fournisseur.nom | replace({ ' ': '_' }) ~ "-solde" ~ '.csv'}}", "_blank")
     });
 
   });

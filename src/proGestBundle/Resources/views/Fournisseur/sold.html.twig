@@ -1,7 +1,6 @@
 {% extends '::print_layout.html.twig' %}
 
 {% block body %}
-
   <h2 class="page-header">Solde du compte "{{ fournisseur.prenom }} {{ fournisseur.nom }}"<span id="fournisseurId" data="{{ fournisseur.id }}"></span></h2>
   <div class=""row>
     <h3>Chiffres clés</h3>
@@ -90,7 +89,7 @@
             <tr>
               <td class="text-center">{{ article.prixAchat|number_format(2) }} €</td>
               <td class="text-center">{{ article.livre }}</td>
-              <td class="text-center">{{ article.vendu }}</td>
+              <td class="text-center">{% if article.vendu == 0 %}0{% else %}{{ article.vendu }}{% endif %}</td>
               <td class="text-center">{{ article.stock }}</td>
               <td class="text-center">{{ (article.vendu * article.prixAchat)|number_format(2) }} €</td>
               <td class="text-center">{{ (article.vendu * article.prixAchat * (boutique.marge / 100))|number_format(2) }} €</td>
